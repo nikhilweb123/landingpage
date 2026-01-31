@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO: Primary Title Tag with Primary Keyword -->
+    <title>Diagnomitra - Preventive Healthcare & Diagnostic Testing Services</title>
+
+    <!-- SEO: Meta Description (155 characters) -->
+    <meta name="description" content="Get comprehensive diagnostic testing and preventive health checkups with Diagnomitra. Upload reports, book tests, and take control of your health today.">
+
+    <!-- SEO: Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Diagnomitra - Preventive Healthcare & Diagnostic Testing">
+    <meta property="og:description" content="Comprehensive diagnostic testing and preventive health checkups for better health outcomes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diagnomitra.com">
+    <meta property="og:image" content="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630">
+
+    <!-- SEO: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Diagnomitra - Preventive Healthcare & Diagnostic Testing">
+    <meta name="twitter:description" content="Comprehensive diagnostic testing and preventive health checkups for better health outcomes.">
+    <meta name="twitter:image" content="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Supabase JS Client CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Preconnect for Performance (Core Web Vitals Optimization #1) -->
+    <link rel="preconnect" href="https://images.pexels.com">
+
+    <style>
+        /* Custom smooth transitions for modal */
+        .modal-backdrop {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-content {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        /* Hide scrollbar when modal is open */
+        body.modal-open {
+            overflow: hidden;
+        }
+        /* Smooth scroll behavior (Core Web Vitals Optimization #2) */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="antialiased bg-white text-gray-900">
+
+    <!--
+    ==========================================
+    SEO STRATEGY COMMENTS
+    ==========================================
+
+    PRIMARY KEYWORD: preventive healthcare diagnostics
+
+    SECONDARY KEYWORDS:
+    1. diagnostic testing services
+    2. health checkup packages
+    3. medical report analysis
+
+    HEADING STRUCTURE:
+    - H1: Main headline in hero (only one per page)
+    - H2: Section titles (Why Preventive Health Matters, CTA Section)
+    - H3: Card titles within sections
+
+    INTERNAL LINKING IDEAS:
+    1. Link to /about-us page (company information)
+    2. Link to /services page (detailed test packages)
+    3. Link to /blog with health tips and preventive care articles
+
+    CORE WEB VITALS OPTIMIZATIONS:
+    1. Preconnect to image CDN for faster LCP
+    2. Lazy loading images below the fold
+    3. Inline critical CSS, defer non-critical assets
+    4. Minimal JavaScript for fast interactivity (FID/INP)
+    5. Use responsive images with proper sizing
+
+    ==========================================
+    -->
+
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <!-- Logo SVG -->
+                    <svg class="w-8 h-8 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <span class="text-2xl font-bold text-blue-600">Diagnomitra</span>
+                </div>
+                <button id="openModalBtn" class="hidden sm:block bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200">
+                    Book Now
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-br from-blue-50 to-white py-16 sm:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Hero Content -->
+                    <div class="text-center lg:text-left">
+                        <!-- H1: Primary Keyword Integration -->
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                            Your Health, <span class="text-blue-600">Our Priority</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
+                            Experience comprehensive preventive healthcare diagnostics with cutting-edge technology. Upload your reports or book advanced health checkup packages today.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <button id="uploadReportsBtn" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                                Upload Reports
+                            </button>
+                            <button id="bookTestsBtn" class="bg-white text-blue-600 border-2 border-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                                Book Tests
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Hero Image -->
+                    <div class="relative">
+                        <img
+                            src="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600"
+                            alt="Medical professional conducting diagnostic healthcare testing and preventive health checkup"
+                            width="1200"
+                            height="600"
+                            class="rounded-2xl shadow-2xl w-full h-auto"
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Preventive Health Matters Section -->
+        <section class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- H2: Section Title -->
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                        Why Preventive Health Matters
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Early detection and regular health monitoring can significantly improve health outcomes and quality of life.
+                    </p>
+                </div>
+
+                <!-- Three Cards Grid -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <article class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+                        <!-- SVG Icon -->
+                        <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Early Detection</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Identify potential health issues before they become serious. Regular diagnostic testing enables timely intervention and better treatment outcomes.
+                        </p>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="bg-gradient-to-br from-green-50 to-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-green-100">
+                        <!-- SVG Icon -->
+                        <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Comprehensive Analysis</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Get detailed insights into your health with advanced diagnostic technology and expert medical report analysis for informed decisions.
+                        </p>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="bg-gradient-to-br from-purple-50 to-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-purple-100">
+                        <!-- SVG Icon -->
+                        <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Peace of Mind</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Stay confident about your health status with regular checkups and professional guidance from our healthcare experts.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 sm:py-24 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                    Take Control of Your Health Today
+                </h2>
+                <p class="text-xl text-blue-100 mb-10 leading-relaxed">
+                    Join thousands of satisfied patients who trust Diagnomitra for their preventive healthcare needs. Book your comprehensive health checkup now.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button id="ctaUploadBtn" class="bg-white text-blue-600 px-10 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transform hover:scale-105 transition-all duration-200 shadow-xl hover:shadow-2xl">
+                        Upload Your Reports
+                    </button>
+                    <button id="ctaBookBtn" class="bg-blue-500 text-white border-2 border-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-blue-400 transform hover:scale-105 transition-all duration-200 shadow-xl hover:shadow-2xl">
+                        Schedule a Checkup
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-blue-400 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span class="text-2xl font-bold text-blue-400">Diagnomitra</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Your trusted partner in preventive healthcare and diagnostic testing services.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-blue-400 transition-colors">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-blue-400 transition-colors">Our Services</a></li>
+                        <li><a href="#packages" class="text-gray-400 hover:text-blue-400 transition-colors">Health Packages</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-blue-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Email: info@diagnomitra.com</li>
+                        <li>Phone: +91 1800-123-4567</li>
+                        <li>Support: Available 24/7</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Diagnomitra. All rights reserved. Your health is our priority.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Backdrop -->
+    <div id="modalBackdrop" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+        <!-- Modal Content -->
+        <div id="modalContent" class="modal-content bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-blue-700 p-6 rounded-t-2xl">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl font-bold text-white">Get Started Today</h2>
+                    <button id="closeModalBtn" class="text-white hover:text-gray-200 transition-colors" aria-label="Close modal">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <p class="text-blue-100 mt-2">Fill in your details and we'll contact you shortly</p>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6">
+                <!-- Form -->
+                <form id="leadForm" class="space-y-5">
+                    <!-- Name Field -->
+                    <div>
+                        <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            placeholder="Enter your full name"
+                        >
+                    </div>
+
+                    <!-- Age Field -->
+                    <div>
+                        <label for="age" class="block text-sm font-semibold text-gray-700 mb-2">Age *</label>
+                        <input
+                            type="number"
+                            id="age"
+                            name="age"
+                            required
+                            min="1"
+                            max="120"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            placeholder="Enter your age"
+                        >
+                    </div>
+
+                    <!-- City Field -->
+                    <div>
+                        <label for="city" class="block text-sm font-semibold text-gray-700 mb-2">City *</label>
+                        <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            placeholder="Enter your city"
+                        >
+                    </div>
+
+                    <!-- Mobile Field -->
+                    <div>
+                        <label for="mobile" class="block text-sm font-semibold text-gray-700 mb-2">Mobile Number *</label>
+                        <input
+                            type="tel"
+                            id="mobile"
+                            name="mobile"
+                            required
+                            pattern="[0-9]{10}"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            placeholder="10-digit mobile number"
+                        >
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button
+                        type="submit"
+                        id="submitBtn"
+                        class="w-full bg-blue-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        Submit Request
+                    </button>
+                </form>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p class="text-green-800 font-semibold">Thank you! We'll contact you soon.</p>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <div id="errorMessage" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p class="text-red-800 font-semibold" id="errorText">Something went wrong. Please try again.</p>
+                    </div>
+                </div>
+
+                <!-- Recent Submissions -->
+                <div id="submissionsContainer" class="hidden mt-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Recent Submissions</h3>
+                    <div id="submissionsList" class="space-y-3 max-h-64 overflow-y-auto">
+                        <!-- Submissions will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==============================================
+        // SUPABASE CONFIGURATION
+        // ==============================================
+        const SUPABASE_URL = 'https://nmbkgjcolhshyosxeowm.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5tYmtnamNvbGhzaHlvc3hlb3dtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NTk4MTcsImV4cCI6MjA4NTQzNTgxN30.vBdLCTEyRRbw6UksqQhfzufDx_QyPxLGjAurkiHwFVQ';
+
+        // Initialize Supabase client
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // ==============================================
+        // MODAL FUNCTIONALITY
+        // ==============================================
+        const modalBackdrop = document.getElementById('modalBackdrop');
+        const modalContent = document.getElementById('modalContent');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        // All buttons that open the modal
+        const openModalButtons = [
+            document.getElementById('openModalBtn'),
+            document.getElementById('uploadReportsBtn'),
+            document.getElementById('bookTestsBtn'),
+            document.getElementById('ctaUploadBtn'),
+            document.getElementById('ctaBookBtn')
+        ];
+
+        // Function to open modal
+        function openModal() {
+            modalBackdrop.classList.remove('hidden');
+            modalBackdrop.classList.add('flex');
+            document.body.classList.add('modal-open');
+
+            // Animate modal appearance
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+
+            // Focus on first input
+            document.getElementById('name').focus();
+        }
+
+        // Function to close modal
+        function closeModal() {
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+
+            setTimeout(() => {
+                modalBackdrop.classList.remove('flex');
+                modalBackdrop.classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            }, 300);
+        }
+
+        // Add click listeners to all open modal buttons
+        openModalButtons.forEach(button => {
+            if (button) {
+                button.addEventListener('click', openModal);
+            }
+        });
+
+        // Close modal on close button click
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Close modal on backdrop click
+        modalBackdrop.addEventListener('click', (e) => {
+            if (e.target === modalBackdrop) {
+                closeModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modalBackdrop.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // ==============================================
+        // FORM SUBMISSION & SUPABASE INTEGRATION
+        // ==============================================
+        const leadForm = document.getElementById('leadForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const submissionsContainer = document.getElementById('submissionsContainer');
+        const submissionsList = document.getElementById('submissionsList');
+
+        // Handle form submission
+        leadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Hide previous messages
+            successMessage.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                age: parseInt(document.getElementById('age').value),
+                city: document.getElementById('city').value.trim(),
+                mobile: document.getElementById('mobile').value.trim()
+            };
+
+            // Validate mobile number
+            if (!/^[0-9]{10}$/.test(formData.mobile)) {
+                errorText.textContent = 'Please enter a valid 10-digit mobile number.';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            try {
+                // Insert data into Supabase
+                const { data, error } = await supabase
+                    .from('lead_requests')
+                    .insert([formData])
+                    .select();
+
+                if (error) throw error;
+
+                // Show success message
+                successMessage.classList.remove('hidden');
+
+                // Reset form
+                leadForm.reset();
+
+                // Fetch and display recent submissions
+                await fetchRecentSubmissions();
+
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                errorText.textContent = error.message || 'Something went wrong. Please try again.';
+                errorMessage.classList.remove('hidden');
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Request';
+            }
+        });
+
+        // ==============================================
+        // FETCH & DISPLAY RECENT SUBMISSIONS
+        // ==============================================
+        async function fetchRecentSubmissions() {
+            try {
+                const { data, error } = await supabase
+                    .from('lead_requests')
+                    .select('*')
+                    .order('created_at', { ascending: false })
+                    .limit(5);
+
+                if (error) throw error;
+
+                if (data && data.length > 0) {
+                    submissionsContainer.classList.remove('hidden');
+                    submissionsList.innerHTML = '';
+
+                    data.forEach(submission => {
+                        const submissionCard = document.createElement('div');
+                        submissionCard.className = 'bg-gray-50 p-4 rounded-lg border border-gray-200';
+
+                        const date = new Date(submission.created_at);
+                        const formattedDate = date.toLocaleDateString('en-IN', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+
+                        submissionCard.innerHTML = `
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-semibold text-gray-900">${submission.name}</h4>
+                                <span class="text-xs text-gray-500">${formattedDate}</span>
+                            </div>
+                            <div class="text-sm text-gray-600 space-y-1">
+                                <p>Age: ${submission.age} | City: ${submission.city}</p>
+                                <p>Mobile: ${submission.mobile}</p>
+                            </div>
+                        `;
+
+                        submissionsList.appendChild(submissionCard);
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching submissions:', error);
+            }
+        }
+
+        // Fetch submissions on page load
+        fetchRecentSubmissions();
+    </script>
+</body>
+</html>

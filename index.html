@@ -90,7 +90,7 @@
                 <div class="flex items-center">
                     <img src="src/Diagnomitra.png" alt="Diagnomitra Logo" class="h-14">
                 </div>
-                <button id="openModalBtn" class="hidden sm:block bg-[#2B63AF] text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200">
+                <button id="openModalBtn" class="hidden sm:block bg-[#2B63AF] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#1a4580] transition-colors duration-200">
                     Book Now
                 </button>
             </div>
@@ -112,10 +112,10 @@
                             Experience comprehensive preventive healthcare diagnostics with cutting-edge technology. Upload your reports or book advanced health checkup packages today.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <button id="uploadReportsBtn" class="bg-[#2B63AF] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                            <button id="uploadReportsBtn" class="bg-[#2B63AF] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1a4580] transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                                 Upload Reports
                             </button>
-                            <button id="bookTestsBtn" class="bg-white text-[#2B63AF] border-2 border-[#2B63AF] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                            <button id="bookTestsBtn" class="bg-white text-[#2B63AF] border-2 border-[#2B63AF] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1a4580] hover:text-white hover:border-[#1a4580] transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                                 Book Tests
                             </button>
                         </div>
@@ -270,7 +270,7 @@
         <!-- Modal Content -->
         <div id="modalContent" class="modal-content bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0">
             <!-- Modal Header -->
-            <div class="bg-gradient-to-r from-blue-600 to-blue-700 p-6 rounded-t-2xl">
+            <div class="bg-[#2B63AF] p-6 rounded-t-2xl">
                 <div class="flex items-center justify-between">
                     <h2 class="text-2xl font-bold text-white">Get Started Today</h2>
                     <button id="closeModalBtn" class="text-white hover:text-gray-200 transition-colors" aria-label="Close modal">
@@ -294,7 +294,7 @@
                             id="name"
                             name="name"
                             required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent transition-all duration-200"
                             placeholder="Enter your full name"
                         >
                     </div>
@@ -309,7 +309,7 @@
                             required
                             min="1"
                             max="120"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent transition-all duration-200"
                             placeholder="Enter your age"
                         >
                     </div>
@@ -322,7 +322,7 @@
                             id="city"
                             name="city"
                             required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent transition-all duration-200"
                             placeholder="Enter your city"
                         >
                     </div>
@@ -336,7 +336,7 @@
                             name="mobile"
                             required
                             pattern="[0-9]{10}"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent transition-all duration-200"
                             placeholder="10-digit mobile number"
                         >
                     </div>
@@ -345,7 +345,7 @@
                     <button
                         type="submit"
                         id="submitBtn"
-                        class="w-full bg-[#2B63AF] text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                        class="w-full bg-[#2B63AF] text-white py-4 rounded-lg font-semibold text-lg hover:bg-[#1a4580] transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         Submit Request
                     </button>
@@ -381,16 +381,16 @@
         <!-- Modal Content -->
         <div id="uploadModalContent" class="modal-content bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0">
             <!-- Modal Header -->
-            <div class="bg-gradient-to-r from-teal-600 to-teal-700 p-6 rounded-t-2xl">
+            <div class="bg-[#BA3691] p-6 rounded-t-2xl">
                 <div class="flex items-center justify-between">
                     <h2 class="text-2xl font-bold text-white">Upload Reports</h2>
-                    <button id="closeUploadModalBtn" class="text-white hover:text-gray-200 transition-colors" aria-label="Close modal">
+                    <button id="closeUploadModalBtn" class="text-white hover:text-[#2D64B0] transition-colors" aria-label="Close modal">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
                 </div>
-                <p class="text-teal-100 mt-2">Securely upload your medical documents</p>
+                <p class="text-pink-100 mt-2">Securely upload your medical documents</p>
             </div>
 
             <!-- Modal Body -->
@@ -423,7 +423,7 @@
                             id="uploadName"
                             name="uploadName"
                             required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#BA3691] focus:border-transparent transition-all duration-200"
                             placeholder="Enter your full name"
                         >
                     </div>
@@ -432,7 +432,7 @@
                     <button
                         type="submit"
                         id="uploadSubmitBtn"
-                        class="w-full bg-teal-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                        class="w-full bg-[#cf6bb0] text-white py-4 rounded-lg font-semibold text-lg hover:bg-[#942b73] transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         Upload Document
                     </button>

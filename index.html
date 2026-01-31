@@ -21,7 +21,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Diagnomitra - Preventive Healthcare & Diagnostic Testing">
     <meta name="twitter:description" content="Comprehensive diagnostic testing and preventive health checkups for better health outcomes.">
-    <meta name="twitter:image" content="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630">
+    <meta name="twitter:image" content="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630"> 
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -371,11 +371,90 @@
                     </div>
                 </div>
 
-                <!-- Recent Submissions -->
-                <div id="submissionsContainer" class="hidden mt-8">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Recent Submissions</h3>
-                    <div id="submissionsList" class="space-y-3 max-h-64 overflow-y-auto">
-                        <!-- Submissions will be populated here -->
+                <!-- Recent Submissions Removed -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal Backdrop -->
+    <div id="uploadModalBackdrop" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+        <!-- Modal Content -->
+        <div id="uploadModalContent" class="modal-content bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-teal-600 to-teal-700 p-6 rounded-t-2xl">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl font-bold text-white">Upload Reports</h2>
+                    <button id="closeUploadModalBtn" class="text-white hover:text-gray-200 transition-colors" aria-label="Close modal">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <p class="text-teal-100 mt-2">Securely upload your medical documents</p>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6">
+                <!-- Upload Form -->
+                <form id="uploadForm" class="space-y-5">
+                    <!-- File Input -->
+                    <div>
+                        <label for="reportFile" class="block text-sm font-semibold text-gray-700 mb-2">Select File *</label>
+                        <div class="flex items-center justify-center w-full">
+                            <label for="reportFile" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                    </svg>
+                                    <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                    <p class="text-xs text-gray-500">PDF, JPG, PNG (MAX. 5MB)</p>
+                                </div>
+                                <input id="reportFile" type="file" class="hidden" accept=".pdf,.jpg,.jpeg,.png" required />
+                            </label>
+                        </div>
+                        <p id="fileName" class="mt-2 text-sm text-gray-600 text-center hidden"></p>
+                    </div>
+
+                    <!-- Contact Info for Upload -->
+                     <div>
+                        <label for="uploadName" class="block text-sm font-semibold text-gray-700 mb-2">Your Name *</label>
+                        <input
+                            type="text"
+                            id="uploadName"
+                            name="uploadName"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200"
+                            placeholder="Enter your full name"
+                        >
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button
+                        type="submit"
+                        id="uploadSubmitBtn"
+                        class="w-full bg-teal-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        Upload Document
+                    </button>
+                </form>
+
+                <!-- Upload Success Message -->
+                <div id="uploadSuccessMessage" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p class="text-green-800 font-semibold">File uploaded successfully!</p>
+                    </div>
+                </div>
+
+                <!-- Upload Error Message -->
+                <div id="uploadErrorMessage" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p class="text-red-800 font-semibold" id="uploadErrorText">Upload failed. Please try again.</p>
                     </div>
                 </div>
             </div>
@@ -386,100 +465,107 @@
         // ==============================================
         // SUPABASE CONFIGURATION
         // ==============================================
-        const SUPABASE_URL = 'https://nmbkgjcolhshyosxeowm.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5tYmtnamNvbGhzaHlvc3hlb3dtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NTk4MTcsImV4cCI6MjA4NTQzNTgxN30.vBdLCTEyRRbw6UksqQhfzufDx_QyPxLGjAurkiHwFVQ';
+        // REPLACE THESE WITH YOUR ACTUAL SUPABASE URL AND KEY
+        const SUPABASE_URL = 'https://wgqvjeychgqsekbvgbhl.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_MJEs725jBylPQ8FE9ZRErA_ARW1Iofm';
 
         // Initialize Supabase client
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const { createClient } = window.supabase || window.Supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // ==============================================
-        // MODAL FUNCTIONALITY
+        // MODAL STATE MANAGEMENT
         // ==============================================
-        const modalBackdrop = document.getElementById('modalBackdrop');
-        const modalContent = document.getElementById('modalContent');
-        const closeModalBtn = document.getElementById('closeModalBtn');
+        const bookModal = {
+            backdrop: document.getElementById('modalBackdrop'),
+            content: document.getElementById('modalContent'),
+            closeBtn: document.getElementById('closeModalBtn'),
+            triggers: [
+                document.getElementById('openModalBtn'),
+                document.getElementById('bookTestsBtn'),
+                document.getElementById('ctaBookBtn')
+            ]
+        };
 
-        // All buttons that open the modal
-        const openModalButtons = [
-            document.getElementById('openModalBtn'),
-            document.getElementById('uploadReportsBtn'),
-            document.getElementById('bookTestsBtn'),
-            document.getElementById('ctaUploadBtn'),
-            document.getElementById('ctaBookBtn')
-        ];
+        const uploadModal = {
+            backdrop: document.getElementById('uploadModalBackdrop'),
+            content: document.getElementById('uploadModalContent'),
+            closeBtn: document.getElementById('closeUploadModalBtn'),
+            triggers: [
+                document.getElementById('uploadReportsBtn'),
+                document.getElementById('ctaUploadBtn')
+            ]
+        };
 
-        // Function to open modal
-        function openModal() {
-            modalBackdrop.classList.remove('hidden');
-            modalBackdrop.classList.add('flex');
+        // ==============================================
+        // MODAL FUNCTIONS
+        // ==============================================
+        function openModal(modal) {
+            modal.backdrop.classList.remove('hidden');
+            modal.backdrop.classList.add('flex');
             document.body.classList.add('modal-open');
 
             // Animate modal appearance
             setTimeout(() => {
-                modalContent.classList.remove('scale-95', 'opacity-0');
-                modalContent.classList.add('scale-100', 'opacity-100');
+                modal.content.classList.remove('scale-95', 'opacity-0');
+                modal.content.classList.add('scale-100', 'opacity-100');
             }, 10);
-
-            // Focus on first input
-            document.getElementById('name').focus();
         }
 
-        // Function to close modal
-        function closeModal() {
-            modalContent.classList.remove('scale-100', 'opacity-100');
-            modalContent.classList.add('scale-95', 'opacity-0');
+        function closeModal(modal) {
+            modal.content.classList.remove('scale-100', 'opacity-100');
+            modal.content.classList.add('scale-95', 'opacity-0');
 
             setTimeout(() => {
-                modalBackdrop.classList.remove('flex');
-                modalBackdrop.classList.add('hidden');
+                modal.backdrop.classList.remove('flex');
+                modal.backdrop.classList.add('hidden');
                 document.body.classList.remove('modal-open');
             }, 300);
         }
 
-        // Add click listeners to all open modal buttons
-        openModalButtons.forEach(button => {
-            if (button) {
-                button.addEventListener('click', openModal);
+        // Initialize Modal Listeners
+        function setupModalListeners(modal) {
+            // Open triggers
+            modal.triggers.forEach(btn => {
+                if (btn) btn.addEventListener('click', () => openModal(modal));
+            });
+
+            // Close button
+            if (modal.closeBtn) {
+                modal.closeBtn.addEventListener('click', () => closeModal(modal));
             }
-        });
 
-        // Close modal on close button click
-        closeModalBtn.addEventListener('click', closeModal);
+            // Backdrop click
+            modal.backdrop.addEventListener('click', (e) => {
+                if (e.target === modal.backdrop) closeModal(modal);
+            });
+        }
 
-        // Close modal on backdrop click
-        modalBackdrop.addEventListener('click', (e) => {
-            if (e.target === modalBackdrop) {
-                closeModal();
-            }
-        });
+        setupModalListeners(bookModal);
+        setupModalListeners(uploadModal);
 
-        // Close modal on Escape key
+        // Global Escape Key Listener
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modalBackdrop.classList.contains('hidden')) {
-                closeModal();
+            if (e.key === 'Escape') {
+                if (!bookModal.backdrop.classList.contains('hidden')) closeModal(bookModal);
+                if (!uploadModal.backdrop.classList.contains('hidden')) closeModal(uploadModal);
             }
         });
 
         // ==============================================
-        // FORM SUBMISSION & SUPABASE INTEGRATION
+        // BOOKING FORM LOGIC
         // ==============================================
         const leadForm = document.getElementById('leadForm');
         const submitBtn = document.getElementById('submitBtn');
         const successMessage = document.getElementById('successMessage');
         const errorMessage = document.getElementById('errorMessage');
         const errorText = document.getElementById('errorText');
-        const submissionsContainer = document.getElementById('submissionsContainer');
-        const submissionsList = document.getElementById('submissionsList');
 
-        // Handle form submission
         leadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-
-            // Hide previous messages
             successMessage.classList.add('hidden');
             errorMessage.classList.add('hidden');
 
-            // Get form data
             const formData = {
                 name: document.getElementById('name').value.trim(),
                 age: parseInt(document.getElementById('age').value),
@@ -487,97 +573,128 @@
                 mobile: document.getElementById('mobile').value.trim()
             };
 
-            // Validate mobile number
             if (!/^[0-9]{10}$/.test(formData.mobile)) {
                 errorText.textContent = 'Please enter a valid 10-digit mobile number.';
                 errorMessage.classList.remove('hidden');
                 return;
             }
 
-            // Show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
 
             try {
-                // Insert data into Supabase
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('lead_requests')
                     .insert([formData])
                     .select();
 
                 if (error) throw error;
 
-                // Show success message
                 successMessage.classList.remove('hidden');
-
-                // Reset form
                 leadForm.reset();
 
-                // Fetch and display recent submissions
-                await fetchRecentSubmissions();
+                // Auto-close modal after 5 seconds on success
+                setTimeout(() => {
+                    closeModal(bookModal);
+                    // Hide success message after closing to reset state for next time
+                    setTimeout(() => successMessage.classList.add('hidden'), 300);
+                }, 5000);
 
             } catch (error) {
                 console.error('Error submitting form:', error);
                 errorText.textContent = error.message || 'Something went wrong. Please try again.';
                 errorMessage.classList.remove('hidden');
             } finally {
-                // Reset button state
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Request';
             }
         });
 
         // ==============================================
-        // FETCH & DISPLAY RECENT SUBMISSIONS
+        // FILE UPLOAD LOGIC
         // ==============================================
-        async function fetchRecentSubmissions() {
+        const uploadForm = document.getElementById('uploadForm');
+        const reportFile = document.getElementById('reportFile');
+        const fileNameDisplay = document.getElementById('fileName');
+        const uploadSubmitBtn = document.getElementById('uploadSubmitBtn');
+        const uploadSuccessMessage = document.getElementById('uploadSuccessMessage');
+        const uploadErrorMessage = document.getElementById('uploadErrorMessage');
+        const uploadErrorText = document.getElementById('uploadErrorText');
+
+        // Show filename when file selected
+        reportFile.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                fileNameDisplay.textContent = `Selected: ${file.name}`;
+                fileNameDisplay.classList.remove('hidden');
+            } else {
+                fileNameDisplay.classList.add('hidden');
+            }
+        });
+
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            uploadSuccessMessage.classList.add('hidden');
+            uploadErrorMessage.classList.add('hidden');
+
+            const file = reportFile.files[0];
+            const userName = document.getElementById('uploadName').value.trim();
+
+            if (!file) {
+                uploadErrorText.textContent = 'Please select a file to upload.';
+                uploadErrorMessage.classList.remove('hidden');
+                return;
+            }
+
+            uploadSubmitBtn.disabled = true;
+            uploadSubmitBtn.textContent = 'Uploading...';
+
             try {
-                const { data, error } = await supabase
-                    .from('lead_requests')
-                    .select('*')
-                    .order('created_at', { ascending: false })
-                    .limit(5);
+                // sanitize file name
+                const fileExt = file.name.split('.').pop();
+                const cleanName = userName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+                const fileName = `${cleanName}_${Date.now()}.${fileExt}`;
+                const filePath = `${fileName}`;
+
+                // Upload file to Supabase Storage 'reports' bucket
+                const { data, error } = await supabaseClient.storage
+                    .from('reports')
+                    .upload(filePath, file);
 
                 if (error) throw error;
 
-                if (data && data.length > 0) {
-                    submissionsContainer.classList.remove('hidden');
-                    submissionsList.innerHTML = '';
+                uploadSuccessMessage.classList.remove('hidden');
+                uploadForm.reset();
+                fileNameDisplay.classList.add('hidden');
 
-                    data.forEach(submission => {
-                        const submissionCard = document.createElement('div');
-                        submissionCard.className = 'bg-gray-50 p-4 rounded-lg border border-gray-200';
+                // Auto-close modal after 5 seconds on success
+                setTimeout(() => {
+                    closeModal(uploadModal);
+                    // Hide success message after closing to reset state for next time
+                    setTimeout(() => uploadSuccessMessage.classList.add('hidden'), 300);
+                }, 5000);
 
-                        const date = new Date(submission.created_at);
-                        const formattedDate = date.toLocaleDateString('en-IN', {
-                            day: 'numeric',
-                            month: 'short',
-                            year: 'numeric',
-                            hour: '2-digit',
-                            minute: '2-digit'
-                        });
-
-                        submissionCard.innerHTML = `
-                            <div class="flex justify-between items-start mb-2">
-                                <h4 class="font-semibold text-gray-900">${submission.name}</h4>
-                                <span class="text-xs text-gray-500">${formattedDate}</span>
-                            </div>
-                            <div class="text-sm text-gray-600 space-y-1">
-                                <p>Age: ${submission.age} | City: ${submission.city}</p>
-                                <p>Mobile: ${submission.mobile}</p>
-                            </div>
-                        `;
-
-                        submissionsList.appendChild(submissionCard);
-                    });
-                }
             } catch (error) {
-                console.error('Error fetching submissions:', error);
-            }
-        }
+                console.error('Error uploading file:', error);
+                
+                let msg = error.message || 'Upload failed. Please try again.';
+                
+                // Helpful message for "Bucket not found"
+                if (msg.includes('Bucket not found')) {
+                    msg = 'System Error: Storage bucket "reports" missing. Please create a public bucket named "reports" in Supabase.';
+                }
+                // Helpful message for "row-level security" (RLS)
+                else if (msg.includes('row-level security') || msg.includes('new row violates')) {
+                    msg = 'Permission Error: Please check Supabase Storage policies (RLS) for public uploads.';
+                }
 
-        // Fetch submissions on page load
-        fetchRecentSubmissions();
+                uploadErrorText.textContent = msg;
+                uploadErrorMessage.classList.remove('hidden');
+            } finally {
+                uploadSubmitBtn.disabled = false;
+                uploadSubmitBtn.textContent = 'Upload Document';
+            }
+        });
     </script>
 </body>
 </html>

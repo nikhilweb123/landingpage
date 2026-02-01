@@ -77,28 +77,18 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Supabase JS Client CDN -->
+    <!-- Supabase JS (required before inline app script) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- Preconnect for Performance (Core Web Vitals Optimization #1) -->
+    <!-- Preconnect + preload hero image for LCP -->
     <link rel="preconnect" href="https://images.pexels.com">
+    <link rel="preload" as="image" href="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600">
 
     <style>
-        /* Custom smooth transitions for modal */
-        .modal-backdrop {
-            transition: opacity 0.3s ease-in-out;
-        }
-        .modal-content {
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-        }
-        /* Hide scrollbar when modal is open */
-        body.modal-open {
-            overflow: hidden;
-        }
-        /* Smooth scroll behavior (Core Web Vitals Optimization #2) */
-        html {
-            scroll-behavior: smooth;
-        }
+        .modal-backdrop { transition: opacity 0.3s ease-in-out; }
+        .modal-content { transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; }
+        body.modal-open { overflow: hidden; }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="antialiased bg-white text-gray-900">
@@ -109,7 +99,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center min-w-0">
                     <a href="#" class="block">
-                        <img src="src/Diagnomitra.png" alt="Diagnomitra Logo" class="h-10 md:h-14 w-auto" width="140" height="56">
+                        <img src="src/Diagnomitra.png" alt="Diagnomitra - Preventive healthcare and diagnostic testing" class="h-10 md:h-14 w-auto" width="140" height="56">
                     </a>
                 </div>
 
@@ -204,9 +194,10 @@
                         <div class="absolute inset-0 bg-[#2B63AF] rounded-2xl transform rotate-3 opacity-10"></div>
                         <img
                             src="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600"
-                            alt="Medical professional conducting diagnostic healthcare testing"
+                            alt="Medical professional conducting diagnostic blood test and health check at clinic"
                             width="1200"
                             height="600"
+                            fetchpriority="high"
                             class="relative rounded-2xl shadow-2xl w-full h-auto object-cover transform -rotate-2 hover:rotate-0 transition-transform duration-500"
                         >
                     </div>
@@ -256,7 +247,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="relative">
-                        <img src="https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Laboratory team working on diagnostic analysis" class="rounded-2xl shadow-2xl w-full h-auto object-cover" width="800" height="600">
+                        <img src="https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg?auto=compress&cs=tinysrgb&w=800" alt="NABL-accredited laboratory technicians analyzing blood samples and diagnostic reports" class="rounded-2xl shadow-2xl w-full h-auto object-cover" width="800" height="600" loading="lazy">
                         <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg border border-gray-100 hidden sm:block">
                             <div class="flex items-center gap-4">
                                 <div class="bg-blue-100 p-3 rounded-full">
@@ -274,24 +265,33 @@
                         <p class="text-lg text-gray-600 mb-6 leading-relaxed">
                             At Diagnomitra, we believe that prevention is better than cure. Founded with a mission to make high-quality diagnostic services accessible to everyone, we leverage technology to deliver accurate, timely, and understandable health reports.
                         </p>
-                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
                             Our network of NABL-accredited labs and experienced pathologists ensures that every test you book meets the highest standards of medical excellence. Whether you need a routine checkup or specialized testing, we are your trusted partner in health.
                         </p>
+                        <p class="text-sm text-gray-600 mb-4 flex items-start gap-2">
+                            <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            <span><strong>Reviewed by healthcare professionals.</strong> Reports are interpreted in line with standard medical practice.</span>
+                        </p>
+                        <p class="text-sm text-gray-600 mb-6 flex items-start gap-2">
+                            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                            <span><strong>Reports handled securely &amp; privately.</strong> Your data is encrypted and never shared without consent.</span>
+                        </p>
+                        <p class="text-xs text-gray-500 mb-6">Compliance: NABL-accredited labs, ISO 9001:2015 quality management. We follow applicable data protection and medical record standards.</p>
                         <ul class="grid sm:grid-cols-2 gap-4 mb-8">
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 NABL Accredited Labs
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Home Sample Collection
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Digital Reports
                             </li>
                             <li class="flex items-center text-gray-700">
-                                <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Expert Consultation
                             </li>
                         </ul>
@@ -547,7 +547,7 @@
                     <!-- Logo & Brand -->
                     <div class="flex items-center mb-4">
                         <!-- Replace with your actual logo file -->
-                        <img src="src/Diagnomitra.png" alt="Diagnomitra Logo" class="h-10 mr-3 brightness-0 invert" width="100" height="40">
+                        <img src="src/Diagnomitra.png" alt="Diagnomitra - Preventive healthcare and diagnostic testing" class="h-10 mr-3 brightness-0 invert" width="100" height="40" loading="lazy">
                     </div>
                     <p class="text-gray-400">
                         Your trusted partner in preventive healthcare and diagnostic testing services.

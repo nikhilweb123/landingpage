@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO: Primary Title Tag with Primary Keyword -->
+    <title>Diagnomitra - Preventive Healthcare & Diagnostic Testing Services</title>
+    <!-- SEO: Meta Keywords -->
+    <meta name="keywords" content="preventive healthcare, diagnostic testing, full body checkup, health packages, home sample collection, medical report analysis, Diagnomitra, blood test, pathology lab">   
+
+    
+
+    <!-- SEO: Meta Description (155 characters) -->
+    <meta name="description" content="Diagnomitra: Your trusted partner for preventive healthcare. Book full body checkups, home sample collection, and get accurate digital reports instantly.">
+
+    <!-- SEO: Canonical Tag (Dynamic) -->
+    <link rel="canonical" href="" id="dynamic-canonical">
+    <script>
+        // Dynamically set canonical URL based on current page URL
+        document.getElementById('dynamic-canonical').href = window.location.href;
+    </script>
+
+    <!-- SEO: Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "Diagnomitra",
+      "image": "https://diagnomitra.com/src/Diagnomitra.png",
+      "description": "Comprehensive diagnostic testing and preventive health checkups.",
+      "url": "https://diagnomitra.com",
+      "telephone": "+91 1800-123-4567",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Health Tech Park",
+        "addressLocality": "Mumbai",
+        "addressRegion": "MH",
+        "postalCode": "400001",
+        "addressCountry": "IN"
+      },
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "08:00",
+        "closes": "20:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/diagnomitra",
+        "https://twitter.com/diagnomitra",
+        "https://www.instagram.com/diagnomitra"
+      ]
+    }
+    </script>
+
+    <!-- SEO: Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Diagnomitra - Preventive Healthcare & Diagnostic Testing">
+    <meta property="og:description" content="Comprehensive diagnostic testing and preventive health checkups for better health outcomes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://diagnomitra.com">
+    <meta property="og:image" content="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630">
+
+    <!-- SEO: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Diagnomitra - Preventive Healthcare & Diagnostic Testing">
+    <meta name="twitter:description" content="Comprehensive diagnostic testing and preventive health checkups for better health outcomes.">
+    <meta name="twitter:image" content="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630"> 
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Supabase JS Client CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Preconnect for Performance (Core Web Vitals Optimization #1) -->
+    <link rel="preconnect" href="https://images.pexels.com">
+
+    <style>
+        /* Custom smooth transitions for modal */
+        .modal-backdrop {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-content {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        /* Hide scrollbar when modal is open */
+        body.modal-open {
+            overflow: hidden;
+        }
+        /* Smooth scroll behavior (Core Web Vitals Optimization #2) */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="antialiased bg-white text-gray-900">
+
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#">
+                        <img src="src/Diagnomitra.png" alt="Diagnomitra Logo" class="h-14">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors">About Us</a>
+                    <a href="#services" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors">Our Services</a>
+                    <a href="#packages" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors">Health Packages</a>
+                    <a href="#contact" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors">Contact</a>
+                </div>
+
+                <!-- Desktop Button -->
+                <div class="hidden md:flex items-center">
+                    <button id="openModalBtn" class="bg-[#2B63AF] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#1a4580] transition-colors duration-200">
+                        Book Now
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-gray-600 hover:text-[#2B63AF] focus:outline-none p-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#services" class="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#2B63AF] hover:bg-blue-50 rounded-md mobile-link">About Us</a>
+                <a href="#services" class="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#2B63AF] hover:bg-blue-50 rounded-md mobile-link">Our Services</a>
+                <a href="#packages" class="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#2B63AF] hover:bg-blue-50 rounded-md mobile-link">Health Packages</a>
+                <a href="#contact" class="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#2B63AF] hover:bg-blue-50 rounded-md mobile-link">Contact</a>
+                <div class="pt-4 mt-4 border-t border-gray-100">
+                    <button id="openModalBtnMobile" class="w-full bg-[#2B63AF] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#1a4580] transition-colors duration-200">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-br from-blue-50 to-white py-16 sm:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Hero Content -->
+                    <div class="text-center lg:text-left">
+                        <!-- H1: Primary Keyword Integration -->
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                            Your Health, <span class="text-[#2B63AF]">Our Priority</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
+                            Experience comprehensive preventive healthcare diagnostics with cutting-edge technology. Upload your reports or book advanced health checkup packages today.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <button id="uploadReportsBtn" class="bg-[#2B63AF] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1a4580] transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                                Upload Reports
+                            </button>
+                            <button id="bookTestsBtn" class="bg-white text-[#2B63AF] border-2 border-[#2B63AF] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1a4580] hover:text-white hover:border-[#1a4580] transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                                Book Tests
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Hero Image -->
+                    <div class="relative">
+                        <img
+                            src="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600"
+                            alt="Medical professional conducting diagnostic healthcare testing and preventive health checkup"
+                            width="1200"
+                            height="600"
+                            class="rounded-2xl shadow-2xl w-full h-auto"
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Preventive Health Matters Section -->
+        <section id="services" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- H2: Section Title -->
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                        Why Preventive Health Matters
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Early detection and regular health monitoring can significantly improve health outcomes and quality of life.
+                    </p>
+                </div>
+
+                <!-- Three Cards Grid -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1: Blue Theme -->
+                    <article class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-blue-100">
+                        <!-- SVG Icon -->
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Early Detection</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Identify potential health issues before they become serious. Regular diagnostic testing enables timely intervention and better treatment outcomes.
+                        </p>
+                    </article>
+
+                    <!-- Card 2: Teal Theme -->
+                    <article class="bg-gradient-to-br from-teal-50 to-white p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-teal-100">
+                        <!-- SVG Icon -->
+                        <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Comprehensive Analysis</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Get detailed insights into your health with advanced diagnostic technology and expert medical report analysis for informed decisions.
+                        </p>
+                    </article>
+
+                    <!-- Card 3: Pink Theme -->
+                    <article class="bg-gradient-to-br from-pink-50 to-white p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-pink-100">
+                        <!-- SVG Icon -->
+                        <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Peace of Mind</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Stay confident about your health status with regular checkups and professional guidance from our healthcare experts.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Health Packages Section -->
+        <section id="packages" class="py-16 sm:py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Popular Health Packages</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Choose from our comprehensive range of health checkup packages designed for every need.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Basic Package -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="bg-blue-600 p-6 text-center text-white">
+                            <h3 class="text-2xl font-bold">Basic Health Check</h3>
+                            <div class="mt-4 text-4xl font-bold">₹1,499</div>
+                            <p class="mt-2 text-blue-100">Essential for everyone</p>
+                        </div>
+                        <div class="p-8">
+                            <ul class="space-y-4 text-gray-600">
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Complete Blood Count (CBC)</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Blood Sugar Fasting</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Lipid Profile</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Liver Function Test</li>
+                            </ul>
+                            <button class="w-full mt-8 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors" onclick="document.getElementById('openModalBtn').click()">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Package -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-[#BA3691] relative">
+                        <div class="absolute top-0 right-0 bg-[#BA3691] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAR</div>
+                        <div class="bg-[#BA3691] p-6 text-center text-white">
+                            <h3 class="text-2xl font-bold">Advanced Health Check</h3>
+                            <div class="mt-4 text-4xl font-bold">₹2,999</div>
+                            <p class="mt-2 text-pink-100">Comprehensive coverage</p>
+                        </div>
+                        <div class="p-8">
+                            <ul class="space-y-4 text-gray-600">
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>All Basic Tests</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Kidney Function Test</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Thyroid Profile</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>HbA1c</li>
+                            </ul>
+                            <button class="w-full mt-8 bg-[#BA3691] text-white py-3 rounded-lg font-semibold hover:bg-[#942b73] transition-colors" onclick="document.getElementById('openModalBtn').click()">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Premium Package -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="bg-teal-600 p-6 text-center text-white">
+                            <h3 class="text-2xl font-bold">Full Body Premium</h3>
+                            <div class="mt-4 text-4xl font-bold">₹4,999</div>
+                            <p class="mt-2 text-teal-100">Total peace of mind</p>
+                        </div>
+                        <div class="p-8">
+                            <ul class="space-y-4 text-gray-600">
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>All Advanced Tests</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Vitamin B12 & D3</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Cardiac Risk Markers</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Iron Profile</li>
+                            </ul>
+                            <button class="w-full mt-8 bg-teal-600 text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition-colors" onclick="document.getElementById('openModalBtn').click()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative">
+                        <img src="https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Laboratory team working on diagnostic analysis" class="rounded-2xl shadow-2xl w-full h-auto">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg border border-gray-100 hidden sm:block">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-blue-100 p-3 rounded-full">
+                                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900">100%</p>
+                                    <p class="text-sm text-gray-600">Accurate Reports</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">About Diagnomitra</h2>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            At Diagnomitra, we believe that prevention is better than cure. Founded with a mission to make high-quality diagnostic services accessible to everyone, we leverage technology to deliver accurate, timely, and understandable health reports.
+                        </p>
+                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                            Our network of NABL-accredited labs and experienced pathologists ensures that every test you book meets the highest standards of medical excellence. Whether you need a routine checkup or specialized testing, we are your trusted partner in health.
+                        </p>
+                        <ul class="grid sm:grid-cols-2 gap-4 mb-8">
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                NABL Accredited Labs
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Home Sample Collection
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Digital Reports
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Expert Consultation
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="cta" class="py-16 sm:py-24 bg-gradient-to-br from-blue-800 via-teal-700 to-blue-900 text-white relative overflow-hidden">
+            <!-- Decorative circle -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-pink-500 opacity-10 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 rounded-full bg-teal-400 opacity-10 blur-3xl"></div>
+
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                    Take Control of Your Health Today
+                </h2>
+                <p class="text-xl text-blue-50 mb-10 leading-relaxed">
+                    Join thousands of satisfied patients who trust Diagnomitra for their preventive healthcare needs. Book your comprehensive health checkup now.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button id="ctaUploadBtn" class="bg-white text-blue-800 px-10 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transform hover:scale-105 transition-all duration-200 shadow-xl">
+                        Upload Your Reports
+                    </button>
+                    <button id="ctaBookBtn" class="bg-pink-600 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-pink-700 transform hover:scale-105 transition-all duration-200 shadow-xl ring-2 ring-pink-500/50">
+                        Schedule a Checkup
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <!-- Brand -->
+                <div>
+                    <!-- Logo & Brand -->
+                    <div class="flex items-center mb-4">
+                        <!-- Replace with your actual logo file -->
+                        <img src="src/Diagnomitra.png" alt="Diagnomitra Logo" class="h-10 mr-3">
+                    </div>
+                    <p class="text-gray-400">
+                        Your trusted partner in preventive healthcare and diagnostic testing services.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-blue-400 transition-colors">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-blue-400 transition-colors">Our Services</a></li>
+                        <li><a href="#packages" class="text-gray-400 hover:text-blue-400 transition-colors">Health Packages</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-blue-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Email: info@diagnomitra.com</li>
+                        <li>Phone: +91 1800-123-4567</li>
+                        <li>Support: Available 24/7</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 Diagnomitra. All rights reserved. Your health is our priority.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Backdrop -->
+    <div id="modalBackdrop" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+        <!-- Modal Content -->
+        <div id="modalContent" class="modal-content bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0">
+            <!-- Modal Header -->
+            <div class="bg-[#2B63AF] p-6 rounded-t-2xl">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl font-bold text-white">Get Started Today</h2>
+                    <button id="closeModalBtn" class="text-white hover:text-gray-200 transition-colors" aria-label="Close modal">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <p class="text-blue-100 mt-2">Fill in your details and we'll contact you shortly</p>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6">
+                <!-- Form -->
+                <form id="leadForm" class="space-y-5">
+                    <!-- Name Field -->
+                    <div>
+                        <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent transition-all duration-200"
+                            placeholder="Enter your full name"
+                        >
+                    </div>
+
+                    <!-- Age Field -->
+                    <div>
+                        <label for="age" class="block text-sm font-semibold text-gray-700 mb-2">Age *</label>
+                        <input
+                            type="number"
+                            id="age"
+                            name="age"
+                            required
+                            min="1"
+                            max="120"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent transition-all duration-200"
+                            placeholder="Enter your age"
+                        >
+                    </div>
+
+                    <!-- City Field -->
+                    <div>
+                        <label for="city" class="block text-sm font-semibold text-gray-700 mb-2">City *</label>
+                        <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent transition-all duration-200"
+                            placeholder="Enter your city"
+                        >
+                    </div>
+
+                    <!-- Mobile Field -->
+                    <div>
+                        <label for="mobile" class="block text-sm font-semibold text-gray-700 mb-2">Mobile Number *</label>
+                        <input
+                            type="tel"
+                            id="mobile"
+                            name="mobile"
+                            required
+                            pattern="[0-9]{10}"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent transition-all duration-200"
+                            placeholder="10-digit mobile number"
+                        >
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button
+                        type="submit"
+                        id="submitBtn"
+                        class="w-full bg-[#2B63AF] text-white py-4 rounded-lg font-semibold text-lg hover:bg-[#1a4580] transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        Submit Request
+                    </button>
+                </form>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p class="text-green-800 font-semibold">Thank you! We'll contact you soon.</p>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <div id="errorMessage" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p class="text-red-800 font-semibold" id="errorText">Something went wrong. Please try again.</p>
+                    </div>
+                </div>
+
+                <!-- Recent Submissions Removed -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal Backdrop -->
+    <div id="uploadModalBackdrop" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+        <!-- Modal Content -->
+        <div id="uploadModalContent" class="modal-content bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0">
+            <!-- Modal Header -->
+            <div class="bg-[#BA3691] p-6 rounded-t-2xl">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl font-bold text-white">Upload Reports</h2>
+                    <button id="closeUploadModalBtn" class="text-white hover:text-[#2D64B0] transition-colors" aria-label="Close modal">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <p class="text-pink-100 mt-2">Securely upload your medical documents</p>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6">
+                <!-- Upload Form -->
+                <form id="uploadForm" class="space-y-5">
+                    <!-- File Input -->
+                    <div>
+                        <label for="reportFile" class="block text-sm font-semibold text-gray-700 mb-2">Select File *</label>
+                        <div class="flex items-center justify-center w-full">
+                            <label for="reportFile" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                    </svg>
+                                    <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                    <p class="text-xs text-gray-500">PDF, JPG, PNG (MAX. 5MB)</p>
+                                </div>
+                                <input id="reportFile" type="file" class="hidden" accept=".pdf,.jpg,.jpeg,.png" required />
+                            </label>
+                        </div>
+                        <p id="fileName" class="mt-2 text-sm text-gray-600 text-center hidden"></p>
+                    </div>
+
+                    <!-- Contact Info for Upload -->
+                     <div>
+                        <label for="uploadName" class="block text-sm font-semibold text-gray-700 mb-2">Your Name *</label>
+                        <input
+                            type="text"
+                            id="uploadName"
+                            name="uploadName"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#BA3691] focus:border-transparent transition-all duration-200"
+                            placeholder="Enter your full name"
+                        >
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button
+                        type="submit"
+                        id="uploadSubmitBtn"
+                        class="w-full bg-[#cf6bb0] text-white py-4 rounded-lg font-semibold text-lg hover:bg-[#942b73] transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        Upload Document
+                    </button>
+                </form>
+
+                <!-- Upload Success Message -->
+                <div id="uploadSuccessMessage" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p class="text-green-800 font-semibold">File uploaded successfully!</p>
+                    </div>
+                </div>
+
+                <!-- Upload Error Message -->
+                <div id="uploadErrorMessage" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p class="text-red-800 font-semibold" id="uploadErrorText">Upload failed. Please try again.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==============================================
+        // SUPABASE CONFIGURATION
+        // ==============================================
+        // REPLACE THESE WITH YOUR ACTUAL SUPABASE URL AND KEY
+        const SUPABASE_URL = 'https://wgqvjeychgqsekbvgbhl.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_MJEs725jBylPQ8FE9ZRErA_ARW1Iofm';
+
+        // Initialize Supabase client
+        const { createClient } = window.supabase || window.Supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // ==============================================
+        // MODAL STATE MANAGEMENT
+        // ==============================================
+        const bookModal = {
+            backdrop: document.getElementById('modalBackdrop'),
+            content: document.getElementById('modalContent'),
+            closeBtn: document.getElementById('closeModalBtn'),
+            triggers: [
+                document.getElementById('openModalBtn'),
+                document.getElementById('openModalBtnMobile'),
+                document.getElementById('bookTestsBtn'),
+                document.getElementById('ctaBookBtn')
+            ]
+        };
+
+        const uploadModal = {
+            backdrop: document.getElementById('uploadModalBackdrop'),
+            content: document.getElementById('uploadModalContent'),
+            closeBtn: document.getElementById('closeUploadModalBtn'),
+            triggers: [
+                document.getElementById('uploadReportsBtn'),
+                document.getElementById('ctaUploadBtn')
+            ]
+        };
+
+        // ==============================================
+        // MODAL FUNCTIONS
+        // ==============================================
+        function openModal(modal) {
+            modal.backdrop.classList.remove('hidden');
+            modal.backdrop.classList.add('flex');
+            document.body.classList.add('modal-open');
+
+            // Animate modal appearance
+            setTimeout(() => {
+                modal.content.classList.remove('scale-95', 'opacity-0');
+                modal.content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal(modal) {
+            modal.content.classList.remove('scale-100', 'opacity-100');
+            modal.content.classList.add('scale-95', 'opacity-0');
+
+            setTimeout(() => {
+                modal.backdrop.classList.remove('flex');
+                modal.backdrop.classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            }, 300);
+        }
+
+        // Initialize Modal Listeners
+        function setupModalListeners(modal) {
+            // Open triggers
+            modal.triggers.forEach(btn => {
+                if (btn) btn.addEventListener('click', () => openModal(modal));
+            });
+
+            // Close button
+            if (modal.closeBtn) {
+                modal.closeBtn.addEventListener('click', () => closeModal(modal));
+            }
+
+            // Backdrop click
+            modal.backdrop.addEventListener('click', (e) => {
+                if (e.target === modal.backdrop) closeModal(modal);
+            });
+        }
+
+        setupModalListeners(bookModal);
+        setupModalListeners(uploadModal);
+
+        // Global Escape Key Listener
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (!bookModal.backdrop.classList.contains('hidden')) closeModal(bookModal);
+                if (!uploadModal.backdrop.classList.contains('hidden')) closeModal(uploadModal);
+            }
+        });
+
+        // ==============================================
+        // BOOKING FORM LOGIC
+        // ==============================================
+        const leadForm = document.getElementById('leadForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+
+        leadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            successMessage.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                age: parseInt(document.getElementById('age').value),
+                city: document.getElementById('city').value.trim(),
+                mobile: document.getElementById('mobile').value.trim()
+            };
+
+            if (!/^[0-9]{10}$/.test(formData.mobile)) {
+                errorText.textContent = 'Please enter a valid 10-digit mobile number.';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            try {
+                const { data, error } = await supabaseClient
+                    .from('lead_requests')
+                    .insert([formData])
+                    .select();
+
+                if (error) throw error;
+
+                successMessage.classList.remove('hidden');
+                leadForm.reset();
+
+                // Auto-close modal after 5 seconds on success
+                setTimeout(() => {
+                    closeModal(bookModal);
+                    // Hide success message after closing to reset state for next time
+                    setTimeout(() => successMessage.classList.add('hidden'), 300);
+                }, 5000);
+
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                errorText.textContent = error.message || 'Something went wrong. Please try again.';
+                errorMessage.classList.remove('hidden');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Request';
+            }
+        });
+
+        // ==============================================
+        // FILE UPLOAD LOGIC
+        // ==============================================
+        const uploadForm = document.getElementById('uploadForm');
+        const reportFile = document.getElementById('reportFile');
+        const fileNameDisplay = document.getElementById('fileName');
+        const uploadSubmitBtn = document.getElementById('uploadSubmitBtn');
+        const uploadSuccessMessage = document.getElementById('uploadSuccessMessage');
+        const uploadErrorMessage = document.getElementById('uploadErrorMessage');
+        const uploadErrorText = document.getElementById('uploadErrorText');
+
+        // Show filename when file selected
+        reportFile.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                fileNameDisplay.textContent = `Selected: ${file.name}`;
+                fileNameDisplay.classList.remove('hidden');
+            } else {
+                fileNameDisplay.classList.add('hidden');
+            }
+        });
+
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            uploadSuccessMessage.classList.add('hidden');
+            uploadErrorMessage.classList.add('hidden');
+
+            const file = reportFile.files[0];
+            const userName = document.getElementById('uploadName').value.trim();
+
+            if (!file) {
+                uploadErrorText.textContent = 'Please select a file to upload.';
+                uploadErrorMessage.classList.remove('hidden');
+                return;
+            }
+
+            uploadSubmitBtn.disabled = true;
+            uploadSubmitBtn.textContent = 'Uploading...';
+
+            try {
+                // sanitize file name
+                const fileExt = file.name.split('.').pop();
+                const cleanName = userName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+                const fileName = `${cleanName}_${Date.now()}.${fileExt}`;
+                const filePath = `${fileName}`;
+
+                // Upload file to Supabase Storage 'reports' bucket
+                const { data, error } = await supabaseClient.storage
+                    .from('reports')
+                    .upload(filePath, file);
+
+                if (error) throw error;
+
+                uploadSuccessMessage.classList.remove('hidden');
+                uploadForm.reset();
+                fileNameDisplay.classList.add('hidden');
+
+                // Auto-close modal after 5 seconds on success
+                setTimeout(() => {
+                    closeModal(uploadModal);
+                    // Hide success message after closing to reset state for next time
+                    setTimeout(() => uploadSuccessMessage.classList.add('hidden'), 300);
+                }, 5000);
+
+            } catch (error) {
+                console.error('Error uploading file:', error);
+                
+                let msg = error.message || 'Upload failed. Please try again.';
+                
+                // Helpful message for "Bucket not found"
+                if (msg.includes('Bucket not found')) {
+                    msg = 'System Error: Storage bucket "reports" missing. Please create a public bucket named "reports" in Supabase.';
+                }
+                // Helpful message for "row-level security" (RLS)
+                else if (msg.includes('row-level security') || msg.includes('new row violates')) {
+                    msg = 'Permission Error: Please check Supabase Storage policies (RLS) for public uploads.';
+                }
+
+                uploadErrorText.textContent = msg;
+                uploadErrorMessage.classList.remove('hidden');
+            } finally {
+                uploadSubmitBtn.disabled = false;
+                uploadSubmitBtn.textContent = 'Upload Document';
+            }
+        });
+
+        // ==============================================
+        // MOBILE MENU LOGIC
+        // ==============================================
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close menu when clicking a link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -157,97 +157,154 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="relative bg-gradient-to-br from-blue-50 to-white py-16 sm:py-24">
+        <section class="relative bg-gradient-to-br from-blue-50 to-white py-16 sm:py-24 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <!-- Hero Content -->
-                    <div class="text-center lg:text-left">
-                        <!-- H1: Primary Keyword Integration -->
+                    <div class="text-center lg:text-left z-10">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-[#2B63AF] rounded-full font-medium text-sm mb-6">
+                            <span class="relative flex h-3 w-3">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                            </span>
+                            Trusted by 10,000+ Patients
+                        </div>
                         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                            Your Health, <span class="text-[#2B63AF]">Our Priority</span>
+                            Take Control of Your Health with <span class="text-[#2B63AF]">Accurate Diagnostics</span>
                         </h1>
                         <p class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
-                            Experience comprehensive preventive healthcare diagnostics with cutting-edge technology. Upload your reports or book advanced health checkup packages today.
+                            Experience seamless home sample collection, NABL-certified accuracy, and same-day digital reports. Trusted by 10,000+ families for reliable preventive healthcare.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <button id="uploadReportsBtn" class="bg-[#2B63AF] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1a4580] transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
-                                Upload Reports
+                            <button id="bookTestsBtn" class="bg-[#2B63AF] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1a4580] transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                Book Your Checkup Now
                             </button>
-                            <button id="bookTestsBtn" class="bg-white text-[#2B63AF] border-2 border-[#2B63AF] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1a4580] hover:text-white hover:border-[#1a4580] transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
-                                Book Tests
+                            <button id="uploadReportsBtn" class="bg-white text-[#2B63AF] border-2 border-[#2B63AF] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#1a4580] hover:text-white hover:border-[#1a4580] transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                                Upload Prescription
                             </button>
+                        </div>
+                        <div class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-gray-500 font-medium">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                NABL Certified Labs
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                24h Report Turnaround
+                            </div>
                         </div>
                     </div>
 
                     <!-- Hero Image -->
                     <div class="relative">
+                        <div class="absolute inset-0 bg-[#2B63AF] rounded-2xl transform rotate-3 opacity-10"></div>
                         <img
                             src="https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600"
-                            alt="Medical professional conducting diagnostic healthcare testing and preventive health checkup"
+                            alt="Medical professional conducting diagnostic healthcare testing"
                             width="1200"
                             height="600"
-                            class="rounded-2xl shadow-2xl w-full h-auto"
+                            class="relative rounded-2xl shadow-2xl w-full h-auto object-cover transform -rotate-2 hover:rotate-0 transition-transform duration-500"
                         >
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Why Preventive Health Matters Section -->
+        <!-- Trust Signals Bar -->
+        <section class="bg-white border-b border-gray-100 py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-gray-500 text-sm font-semibold uppercase tracking-wider mb-8">Trusted by Leading Healthcare Partners</p>
+                <div class="flex flex-wrap justify-center gap-12 lg:gap-20 items-center opacity-70 grayscale hover:grayscale-0 transition-all duration-300">
+                     <!-- Partner 1 -->
+                     <div class="flex flex-col items-center gap-2 group">
+                        <div class="bg-blue-50 p-3 rounded-full group-hover:bg-blue-100 transition-colors">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <span class="font-bold text-gray-700">NABL Accredited</span>
+                     </div>
+                     <!-- Partner 2 -->
+                     <div class="flex flex-col items-center gap-2 group">
+                        <div class="bg-green-50 p-3 rounded-full group-hover:bg-green-100 transition-colors">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <span class="font-bold text-gray-700">ISO 9001:2015</span>
+                     </div>
+                     <!-- Partner 3 -->
+                     <div class="flex flex-col items-center gap-2 group">
+                        <div class="bg-purple-50 p-3 rounded-full group-hover:bg-purple-100 transition-colors">
+                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <span class="font-bold text-gray-700">50+ Expert Doctors</span>
+                     </div>
+                     <!-- Partner 4 -->
+                     <div class="flex flex-col items-center gap-2 group">
+                        <div class="bg-orange-50 p-3 rounded-full group-hover:bg-orange-100 transition-colors">
+                            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        </div>
+                        <span class="font-bold text-gray-700">Safe Home Collection</span>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Benefits Section -->
         <section id="services" class="py-16 sm:py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- H2: Section Title -->
                 <div class="text-center mb-16">
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                        Why Preventive Health Matters
+                        Why Choose Diagnomitra?
                     </h2>
                     <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                        Early detection and regular health monitoring can significantly improve health outcomes and quality of life.
+                        We make health checkups simple, accurate, and convenient. No waiting in lines, no confusing jargon.
                     </p>
                 </div>
 
-                <!-- Three Cards Grid -->
                 <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Card 1: Blue Theme -->
-                    <article class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-blue-100">
-                        <!-- SVG Icon -->
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
+                    <!-- Benefit 1 -->
+                    <article class="bg-blue-50 p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-blue-100 flex flex-col h-full">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-3xl">
+                            🏠
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Early Detection</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Identify potential health issues before they become serious. Regular diagnostic testing enables timely intervention and better treatment outcomes.
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Home Sample Collection</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4 flex-grow">
+                            Certified phlebotomists visit your home at your preferred time. We ensure a safe, hygienic, and painless experience following strict medical protocols.
                         </p>
+                        <div class="text-sm bg-white p-3 rounded-lg border border-blue-100">
+                            <span class="font-bold text-blue-700 block mb-1">Who is it for?</span>
+                            Busy professionals, elderly patients, and families seeking convenience.
+                        </div>
                     </article>
 
-                    <!-- Card 2: Teal Theme -->
-                    <article class="bg-gradient-to-br from-teal-50 to-white p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-teal-100">
-                        <!-- SVG Icon -->
-                        <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
+                    <!-- Benefit 2 -->
+                    <article class="bg-teal-50 p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-teal-100 flex flex-col h-full">
+                        <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-6 text-3xl">
+                            🔬
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Comprehensive Analysis</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Get detailed insights into your health with advanced diagnostic technology and expert medical report analysis for informed decisions.
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">NABL Certified Labs</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4 flex-grow">
+                            All samples are processed in NABL-accredited partner labs using state-of-the-art automation for maximum precision and reliability.
                         </p>
+                        <div class="text-sm bg-white p-3 rounded-lg border border-teal-100">
+                            <span class="font-bold text-teal-700 block mb-1">Who is it for?</span>
+                            Anyone requiring clinically valid reports accepted by doctors and hospitals.
+                        </div>
                     </article>
 
-                    <!-- Card 3: Pink Theme -->
-                    <article class="bg-gradient-to-br from-pink-50 to-white p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-pink-100">
-                        <!-- SVG Icon -->
-                        <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6">
-                            <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
+                    <!-- Benefit 3 -->
+                    <article class="bg-pink-50 p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-pink-100 flex flex-col h-full">
+                        <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6 text-3xl">
+                            📱
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Peace of Mind</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Stay confident about your health status with regular checkups and professional guidance from our healthcare experts.
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Smart Digital Reports</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4 flex-grow">
+                            Get comprehensive, color-coded reports delivered via WhatsApp & Email within 24 hours. Includes trend analysis for repeat tests.
                         </p>
+                        <div class="text-sm bg-white p-3 rounded-lg border border-pink-100">
+                            <span class="font-bold text-pink-700 block mb-1">Who is it for?</span>
+                            Patients who want quick access to their health data anywhere, anytime.
+                        </div>
                     </article>
                 </div>
             </div>
@@ -258,63 +315,111 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Popular Health Packages</h2>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Choose from our comprehensive range of health checkup packages designed for every need.</p>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Comprehensive full-body checkups designed for your age and lifestyle.</p>
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Basic Package -->
-                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
                         <div class="bg-blue-600 p-6 text-center text-white">
                             <h3 class="text-2xl font-bold">Basic Health Check</h3>
                             <div class="mt-4 text-4xl font-bold">₹1,499</div>
-                            <p class="mt-2 text-blue-100">Essential for everyone</p>
+                            <p class="mt-2 text-blue-100 text-sm">Best for: Healthy individuals under 30 for annual screening</p>
                         </div>
-                        <div class="p-8">
-                            <ul class="space-y-4 text-gray-600">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Complete Blood Count (CBC)</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Blood Sugar Fasting</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Lipid Profile</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Liver Function Test</li>
+                        <div class="p-8 flex-grow">
+                            <div class="mb-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Includes 40+ Tests</div>
+                            <ul class="space-y-4 text-gray-600 mb-8">
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Complete Blood Count (CBC)</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Blood Sugar Fasting</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Lipid Profile (Cholesterol)</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Liver Function Test</li>
                             </ul>
-                            <button class="w-full mt-8 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors" onclick="document.getElementById('openModalBtn').click()">Book Now</button>
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-6 bg-gray-100 p-2 rounded">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Reports within 24 hours
+                            </div>
+                            <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors" onclick="document.getElementById('openModalBtn').click()">Schedule Home Collection</button>
                         </div>
                     </div>
 
                     <!-- Advanced Package -->
-                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-[#BA3691] relative">
-                        <div class="absolute top-0 right-0 bg-[#BA3691] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAR</div>
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-[#BA3691] relative flex flex-col">
+                        <div class="absolute top-0 right-0 bg-[#BA3691] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">MOST POPULAR</div>
                         <div class="bg-[#BA3691] p-6 text-center text-white">
                             <h3 class="text-2xl font-bold">Advanced Health Check</h3>
                             <div class="mt-4 text-4xl font-bold">₹2,999</div>
-                            <p class="mt-2 text-pink-100">Comprehensive coverage</p>
+                            <p class="mt-2 text-pink-100 text-sm">Best for: Men & Women 30+ needing a detailed health overview</p>
                         </div>
-                        <div class="p-8">
-                            <ul class="space-y-4 text-gray-600">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>All Basic Tests</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Kidney Function Test</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Thyroid Profile</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>HbA1c</li>
+                        <div class="p-8 flex-grow">
+                            <div class="mb-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Includes 60+ Tests</div>
+                            <ul class="space-y-4 text-gray-600 mb-8">
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>All Basic Tests Included</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Kidney Function Test</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Thyroid Profile (T3, T4, TSH)</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>HbA1c (Diabetes Screen)</li>
                             </ul>
-                            <button class="w-full mt-8 bg-[#BA3691] text-white py-3 rounded-lg font-semibold hover:bg-[#942b73] transition-colors" onclick="document.getElementById('openModalBtn').click()">Book Now</button>
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-6 bg-gray-100 p-2 rounded">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Reports within 24 hours
+                            </div>
+                            <button class="w-full bg-[#BA3691] text-white py-3 rounded-lg font-semibold hover:bg-[#942b73] transition-colors" onclick="document.getElementById('openModalBtn').click()">Schedule Home Collection</button>
                         </div>
                     </div>
 
                     <!-- Premium Package -->
-                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col">
                         <div class="bg-teal-600 p-6 text-center text-white">
                             <h3 class="text-2xl font-bold">Full Body Premium</h3>
                             <div class="mt-4 text-4xl font-bold">₹4,999</div>
-                            <p class="mt-2 text-teal-100">Total peace of mind</p>
+                            <p class="mt-2 text-teal-100 text-sm">Best for: Age 40+ or those monitoring lifestyle conditions</p>
                         </div>
-                        <div class="p-8">
-                            <ul class="space-y-4 text-gray-600">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>All Advanced Tests</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Vitamin B12 & D3</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Cardiac Risk Markers</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Iron Profile</li>
+                        <div class="p-8 flex-grow">
+                            <div class="mb-4 text-sm font-semibold text-gray-500 uppercase tracking-wide">Includes 85+ Tests</div>
+                            <ul class="space-y-4 text-gray-600 mb-8">
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>All Advanced Tests Included</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Vitamin B12 & D3</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Cardiac Risk Markers</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Iron Deficiency Profile</li>
                             </ul>
-                            <button class="w-full mt-8 bg-teal-600 text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition-colors" onclick="document.getElementById('openModalBtn').click()">Book Now</button>
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-6 bg-gray-100 p-2 rounded">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Reports within 24-36 hours
+                            </div>
+                            <button class="w-full bg-teal-600 text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition-colors" onclick="document.getElementById('openModalBtn').click()">Schedule Home Collection</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-16 sm:py-24 bg-white border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Our Patients Say</h2>
+                    <p class="text-lg text-gray-600">Real stories from people who trust Diagnomitra.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Review 1 -->
+                    <div class="bg-gray-50 p-8 rounded-xl relative">
+                        <div class="text-yellow-400 text-2xl mb-4">★★★★★</div>
+                        <p class="text-gray-600 italic mb-6">"The home collection service was a lifesaver for my elderly parents. The phlebotomist was very professional and gentle. Highly recommended!"</p>
+                        <div class="font-bold text-gray-900">Rajesh Kumar</div>
+                        <div class="text-sm text-gray-500">Age 45, Mumbai</div>
+                    </div>
+                     <!-- Review 2 -->
+                    <div class="bg-gray-50 p-8 rounded-xl relative">
+                        <div class="text-yellow-400 text-2xl mb-4">★★★★★</div>
+                        <p class="text-gray-600 italic mb-6">"I uploaded my prescription and got a call back in 10 minutes. The report was delivered on WhatsApp the same evening. Super fast service."</p>
+                        <div class="font-bold text-gray-900">Priya Sharma</div>
+                        <div class="text-sm text-gray-500">Age 28, Pune</div>
+                    </div>
+                     <!-- Review 3 -->
+                    <div class="bg-gray-50 p-8 rounded-xl relative">
+                        <div class="text-yellow-400 text-2xl mb-4">★★★★★</div>
+                        <p class="text-gray-600 italic mb-6">"Very affordable packages compared to other labs. The app makes it easy to track old reports. The Full Body Premium package covers everything."</p>
+                        <div class="font-bold text-gray-900">Amit Patel</div>
+                        <div class="text-sm text-gray-500">Age 38, Bangalore</div>
                     </div>
                 </div>
             </div>
@@ -421,6 +526,16 @@
                     </ul>
                 </div>
 
+                <!-- Legal -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Medical Disclaimer</a></li>
+                    </ul>
+                </div>
+
                 <!-- Contact Info -->
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
@@ -434,6 +549,9 @@
 
             <!-- Copyright -->
             <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p class="mb-4 text-sm max-w-4xl mx-auto opacity-75">
+                    Disclaimer: The information provided on this website is for informational purposes only and is not intended as a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
+                </p>
                 <p>&copy; 2026 Diagnomitra. All rights reserved. Your health is our priority.</p>
             </div>
         </div>
@@ -513,6 +631,7 @@
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent transition-all duration-200"
                             placeholder="10-digit mobile number"
                         >
+                        <p class="mt-1 text-xs text-gray-500">We will call you to confirm your slot.</p>
                     </div>
 
                     <!-- Submit Button -->
@@ -521,8 +640,12 @@
                         id="submitBtn"
                         class="w-full bg-[#2B63AF] text-white py-4 rounded-lg font-semibold text-lg hover:bg-[#1a4580] transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        Submit Request
+                        Book My Appointment
                     </button>
+                    <p class="mt-3 text-xs text-center text-gray-500 flex items-center justify-center">
+                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        Your data is safe. We never spam.
+                    </p>
                 </form>
 
                 <!-- Success Message -->
@@ -608,8 +731,12 @@
                         id="uploadSubmitBtn"
                         class="w-full bg-[#cf6bb0] text-white py-4 rounded-lg font-semibold text-lg hover:bg-[#942b73] transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        Upload Document
+                        Securely Upload File
                     </button>
+                    <p class="mt-3 text-xs text-center text-gray-500 flex items-center justify-center">
+                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        256-bit SSL Encryption. 100% Private.
+                    </p>
                 </form>
 
                 <!-- Upload Success Message -->

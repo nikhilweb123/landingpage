@@ -89,6 +89,8 @@
         .modal-content { transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; }
         body.modal-open { overflow: hidden; }
         html { scroll-behavior: smooth; }
+        .toast-enter { animation: toastSlide 0.3s ease-out; }
+        @keyframes toastSlide { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
     </style>
 </head>
 <body class="antialiased bg-white text-gray-900">
@@ -688,28 +690,12 @@
                     </p>
                 </form>
 
-                <!-- Success Message -->
-                <div id="successMessage" class="hidden mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-                    <div class="flex items-center">
-                        <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <p class="text-green-800 font-semibold text-sm">Thank you! We'll contact you soon.</p>
-                    </div>
-                </div>
-
-                <!-- Error Message -->
-                <div id="errorMessage" class="hidden mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-                    <div class="flex items-center">
-                        <svg class="w-5 h-5 text-red-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <p class="text-red-800 font-semibold text-sm" id="errorText">Something went wrong. Please try again.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+
+    <!-- Toast container (fixed top-right) -->
+    <div id="toastContainer" class="fixed top-4 right-4 z-[60] flex flex-col gap-3 max-w-sm w-full pointer-events-none" aria-live="polite"></div>
 
     <!-- Upload Modal Backdrop -->
     <div id="uploadModalBackdrop" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
@@ -784,26 +770,6 @@
                         256-bit SSL Encryption. 100% Private.
                     </p>
                 </form>
-
-                <!-- Upload Success Message -->
-                <div id="uploadSuccessMessage" class="hidden mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-                    <div class="flex items-center">
-                        <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <p class="text-green-800 font-semibold text-sm">File uploaded successfully!</p>
-                    </div>
-                </div>
-
-                <!-- Upload Error Message -->
-                <div id="uploadErrorMessage" class="hidden mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-                    <div class="flex items-center">
-                        <svg class="w-6 h-6 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <p class="text-red-800 font-semibold" id="uploadErrorText">Upload failed. Please try again.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -900,18 +866,33 @@
         });
 
         // ==============================================
+        // TOAST (success / error / warning)
+        // ==============================================
+        const toastContainer = document.getElementById('toastContainer');
+        function showToast(type, headline, body) {
+            const isSuccess = type === 'success';
+            const isError = type === 'error' || type === 'warning';
+            const bg = isSuccess ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200';
+            const iconBg = isSuccess ? 'bg-green-500' : 'bg-red-500';
+            const iconPath = isSuccess ? 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' : 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z';
+            const toast = document.createElement('div');
+            toast.className = 'toast-enter pointer-events-auto flex items-start gap-3 p-4 rounded-xl border shadow-lg ' + bg;
+            toast.setAttribute('role', 'alert');
+            toast.innerHTML = '<div class="flex-shrink-0 w-10 h-10 rounded-full ' + iconBg + ' flex items-center justify-center"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="' + iconPath + '"></path></svg></div><div class="flex-1 min-w-0"><p class="font-semibold text-gray-900 text-sm">' + (headline || '') + '</p>' + (body ? '<p class="text-gray-700 text-sm mt-0.5">' + body + '</p>' : '') + '</div><button type="button" class="toast-close flex-shrink-0 text-gray-500 hover:text-gray-700 p-1" aria-label="Dismiss"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>';
+            toastContainer.appendChild(toast);
+            const close = () => { toast.remove(); };
+            toast.querySelector('.toast-close').addEventListener('click', close);
+            setTimeout(close, 6000);
+        }
+
+        // ==============================================
         // BOOKING FORM LOGIC
         // ==============================================
         const leadForm = document.getElementById('leadForm');
         const submitBtn = document.getElementById('submitBtn');
-        const successMessage = document.getElementById('successMessage');
-        const errorMessage = document.getElementById('errorMessage');
-        const errorText = document.getElementById('errorText');
 
         leadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            successMessage.classList.add('hidden');
-            errorMessage.classList.add('hidden');
 
             const formData = {
                 name: document.getElementById('name').value.trim(),
@@ -921,8 +902,7 @@
             };
 
             if (!/^[0-9]{10}$/.test(formData.mobile)) {
-                errorText.textContent = 'Please enter a valid 10-digit mobile number.';
-                errorMessage.classList.remove('hidden');
+                showToast('error', 'Invalid mobile number', 'Please enter a valid 10-digit mobile number.');
                 return;
             }
 
@@ -937,18 +917,13 @@
 
                 if (error) throw error;
 
-                successMessage.classList.remove('hidden');
                 leadForm.reset();
-
-                setTimeout(() => {
-                    closeModal(bookModal);
-                    setTimeout(() => successMessage.classList.add('hidden'), 300);
-                }, 5000);
+                closeModal(bookModal);
+                showToast('success', 'Request submitted successfully', "We'll contact you soon.");
 
             } catch (error) {
                 console.error('Error submitting form:', error);
-                errorText.textContent = error.message || 'Something went wrong. Please try again.';
-                errorMessage.classList.remove('hidden');
+                showToast('error', 'Something went wrong', error.message || 'Please try again.');
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Book My Appointment';
@@ -961,27 +936,24 @@
         const uploadForm = document.getElementById('uploadForm');
         const reportFile = document.getElementById('reportFile');
         const uploadSubmitBtn = document.getElementById('uploadSubmitBtn');
-        const uploadSuccessMessage = document.getElementById('uploadSuccessMessage');
-        const uploadErrorMessage = document.getElementById('uploadErrorMessage');
-        const uploadErrorText = document.getElementById('uploadErrorText');
         const filePreviewCard = document.getElementById('filePreviewCard');
         const filePreviewName = document.getElementById('filePreviewName');
-        const filePreviewType = document.getElementById('filePreviewType');
-        const filePreviewSize = document.getElementById('filePreviewSize');
-        const filePreviewChange = document.getElementById('filePreviewChange');
+        const filePreviewMeta = document.getElementById('filePreviewMeta');
+        const filePreviewProgressWrap = document.getElementById('filePreviewProgressWrap');
+        const filePreviewProgress = document.getElementById('filePreviewProgress');
+        const filePreviewRemove = document.getElementById('filePreviewRemove');
         const uploadDropzone = document.getElementById('uploadDropzone');
 
-        // When upload modal opens, reset form (hook into openModal via trigger wrap)
-        const uploadModalOpen = uploadModal.triggers.filter(Boolean);
-        uploadModalOpen.forEach(btn => {
-            const origOnClick = btn.onclick;
+        // When upload modal opens, reset form
+        uploadModal.triggers.filter(Boolean).forEach(btn => {
             btn.addEventListener('click', () => {
                 setTimeout(() => {
                     reportFile.value = '';
                     filePreviewCard.classList.add('hidden');
                     uploadDropzone.classList.remove('hidden');
                     uploadSubmitBtn.disabled = true;
-                    uploadErrorMessage.classList.add('hidden');
+                    if (filePreviewProgressWrap) filePreviewProgressWrap.classList.add('hidden');
+                    if (filePreviewProgress) filePreviewProgress.style.width = '0%';
                 }, 0);
             });
         });
@@ -1003,17 +975,16 @@
 
         reportFile.addEventListener('change', (e) => {
             const file = e.target.files[0];
-            uploadErrorMessage.classList.add('hidden');
             if (file) {
                 if (file.size > MAX_FILE_BYTES) {
-                    uploadErrorText.textContent = 'File must be 5MB or less.';
-                    uploadErrorMessage.classList.remove('hidden');
+                    showToast('error', 'Files are larger than 5 MB', 'Try to compress your files and upload them again.');
                     reportFile.value = '';
                     return;
                 }
                 filePreviewName.textContent = file.name;
-                filePreviewType.textContent = 'Type: ' + getDocumentType(file.name);
-                filePreviewSize.textContent = 'Size: ' + formatFileSize(file.size);
+                filePreviewMeta.textContent = getDocumentType(file.name) + ' • ' + formatFileSize(file.size);
+                if (filePreviewProgressWrap) filePreviewProgressWrap.classList.add('hidden');
+                if (filePreviewProgress) filePreviewProgress.style.width = '0%';
                 filePreviewCard.classList.remove('hidden');
                 uploadDropzone.classList.add('hidden');
                 uploadSubmitBtn.disabled = false;
@@ -1024,73 +995,71 @@
             }
         });
 
-        filePreviewChange.addEventListener('click', () => {
+        filePreviewRemove.addEventListener('click', () => {
             reportFile.value = '';
             filePreviewCard.classList.add('hidden');
             uploadDropzone.classList.remove('hidden');
             uploadSubmitBtn.disabled = true;
+            if (filePreviewProgressWrap) filePreviewProgressWrap.classList.add('hidden');
         });
 
         uploadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            uploadSuccessMessage.classList.add('hidden');
-            uploadErrorMessage.classList.add('hidden');
 
             const file = reportFile.files[0];
             const userName = document.getElementById('uploadName').value.trim();
 
             if (!file) {
-                e.preventDefault();
-                uploadErrorText.textContent = 'Please select a file, then review and submit.';
-                uploadErrorMessage.classList.remove('hidden');
+                showToast('error', 'No file selected', 'Please select a file, then review and submit.');
                 return;
             }
 
             uploadSubmitBtn.disabled = true;
             uploadSubmitBtn.textContent = 'Uploading...';
+            if (filePreviewProgressWrap) filePreviewProgressWrap.classList.remove('hidden');
+            if (filePreviewProgress) filePreviewProgress.style.width = '0%';
+            filePreviewMeta.textContent = formatFileSize(file.size) + ' • Uploading…';
+
+            let progressInterval = setInterval(() => {
+                const w = filePreviewProgress ? parseInt(filePreviewProgress.style.width || '0', 10) : 0;
+                if (w >= 90) { clearInterval(progressInterval); return; }
+                if (filePreviewProgress) filePreviewProgress.style.width = (w + 12) + '%';
+            }, 80);
 
             try {
                 const fileExt = file.name.split('.').pop();
                 const cleanName = userName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
                 const fileName = `${cleanName}_${Date.now()}.${fileExt}`;
-                const filePath = `${fileName}`;
 
-                // Upload file to Supabase Storage 'reports' bucket
                 const { data, error } = await supabaseClient.storage
                     .from('reports')
-                    .upload(filePath, file);
+                    .upload(fileName, file);
+
+                clearInterval(progressInterval);
+                if (filePreviewProgress) filePreviewProgress.style.width = '100%';
 
                 if (error) throw error;
 
-                uploadSuccessMessage.classList.remove('hidden');
                 uploadForm.reset();
                 filePreviewCard.classList.add('hidden');
                 uploadDropzone.classList.remove('hidden');
                 uploadSubmitBtn.disabled = true;
+                if (filePreviewProgressWrap) filePreviewProgressWrap.classList.add('hidden');
 
-                // Auto-close modal after 5 seconds on success
-                setTimeout(() => {
-                    closeModal(uploadModal);
-                    // Hide success message after closing to reset state for next time
-                    setTimeout(() => uploadSuccessMessage.classList.add('hidden'), 300);
-                }, 5000);
+                closeModal(uploadModal);
+                showToast('success', 'Files uploaded successfully', 'You will receive review results in your email in 2-4 days.');
 
             } catch (error) {
-                console.error('Error uploading file:', error);
-                
-                let msg = error.message || 'Upload failed. Please try again.';
-                
-                // Helpful message for "Bucket not found"
-                if (msg.includes('Bucket not found')) {
-                    msg = 'System Error: Storage bucket "reports" missing. Please create a public bucket named "reports" in Supabase.';
-                }
-                // Helpful message for "row-level security" (RLS)
-                else if (msg.includes('row-level security') || msg.includes('new row violates')) {
-                    msg = 'Permission Error: Please check Supabase Storage policies (RLS) for public uploads.';
-                }
+                clearInterval(progressInterval);
+                if (filePreviewProgressWrap) filePreviewProgressWrap.classList.add('hidden');
+                filePreviewMeta.textContent = getDocumentType(file.name) + ' • ' + formatFileSize(file.size);
 
-                uploadErrorText.textContent = msg;
-                uploadErrorMessage.classList.remove('hidden');
+                console.error('Error uploading file:', error);
+                let msg = error.message || 'Upload failed. Please try again.';
+                if (msg.includes('Bucket not found')) msg = 'Storage bucket "reports" is missing. Please contact support.';
+                else if (msg.includes('row-level security') || msg.includes('new row violates')) msg = 'Permission error. Please check storage policies.';
+
+                showToast('error', 'Upload failed', msg);
             } finally {
                 uploadSubmitBtn.disabled = reportFile.files.length === 0;
                 uploadSubmitBtn.textContent = 'Securely Upload File';

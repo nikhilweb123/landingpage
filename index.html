@@ -142,7 +142,7 @@
         <!-- Mobile Menu Overlay -->
         <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-lg">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#services" class="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#2B63AF] hover:bg-blue-50 rounded-md mobile-link">About Us</a>
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#2B63AF] hover:bg-blue-50 rounded-md mobile-link">About Us</a>
                 <a href="#services" class="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#2B63AF] hover:bg-blue-50 rounded-md mobile-link">Our Services</a>
                 <a href="#packages" class="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#2B63AF] hover:bg-blue-50 rounded-md mobile-link">Health Packages</a>
                 <a href="#contact" class="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#2B63AF] hover:bg-blue-50 rounded-md mobile-link">Contact</a>
@@ -249,7 +249,44 @@
             </div>
         </section>
 
-        <!-- Key Benefits Section -->
+        <!-- Why Preventive Health Matters -->
+        <section id="preventive-health" class="py-16 sm:py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                        Why Preventive Health Matters
+                    </h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Small steps today can make a big difference tomorrow.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <article class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4 text-xl">✓</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Catch Issues Early</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Regular checkups help spot problems before they become serious. Early detection often means simpler treatment and better outcomes.
+                        </p>
+                    </article>
+                    <article class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-xl">₹</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Save Money in the Long Run</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            A full body checkup costs less than treating a condition that could have been prevented. You invest in your health now instead of paying more later.
+                        </p>
+                    </article>
+                    <article class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                        <div class="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-4 text-xl">♥</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Peace of Mind</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Knowing your numbers—blood sugar, cholesterol, vitamins—helps you and your doctor make informed decisions. No more guessing about your health.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Services / Why Choose Diagnomitra -->
         <section id="services" class="py-16 sm:py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
@@ -521,6 +558,7 @@
                     <ul class="space-y-2">
                         <li><a href="#about" class="text-gray-400 hover:text-blue-400 transition-colors">About Us</a></li>
                         <li><a href="#services" class="text-gray-400 hover:text-blue-400 transition-colors">Our Services</a></li>
+                        <li><a href="#preventive-health" class="text-gray-400 hover:text-blue-400 transition-colors">Why Preventive Health</a></li>
                         <li><a href="#packages" class="text-gray-400 hover:text-blue-400 transition-colors">Health Packages</a></li>
                         <li><a href="#contact" class="text-gray-400 hover:text-blue-400 transition-colors">Contact</a></li>
                     </ul>
@@ -530,8 +568,8 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Legal</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Terms of Service</a></li>
+                        <li><a href="privacy-policy.html" class="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-blue-400 transition-colors">Terms of Service</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Medical Disclaimer</a></li>
                     </ul>
                 </div>
@@ -668,7 +706,16 @@
                     </div>
                 </div>
 
-                <!-- Recent Submissions Removed -->
+                <!-- Recent Submissions (below form) -->
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <h3 class="text-sm font-semibold text-gray-700 mb-3">Recent submissions</h3>
+                    <div id="recentSubmissionsContainer" class="space-y-2 max-h-40 overflow-y-auto">
+                        <p id="recentSubmissionsLoading" class="text-sm text-gray-500 hidden">Loading...</p>
+                        <p id="recentSubmissionsEmpty" class="text-sm text-gray-500 hidden">No submissions yet.</p>
+                        <ul id="recentSubmissionsList" class="text-sm text-gray-600 space-y-1.5 hidden"></ul>
+                        <p id="recentSubmissionsError" class="text-sm text-red-600 hidden"></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -807,7 +854,10 @@
             modal.backdrop.classList.add('flex');
             document.body.classList.add('modal-open');
 
-            // Animate modal appearance
+            if (modal === bookModal) {
+                fetchRecentSubmissions();
+            }
+
             setTimeout(() => {
                 modal.content.classList.remove('scale-95', 'opacity-0');
                 modal.content.classList.add('scale-100', 'opacity-100');
@@ -855,6 +905,52 @@
         });
 
         // ==============================================
+        // RECENT SUBMISSIONS (lead_requests list)
+        // ==============================================
+        const recentSubmissionsList = document.getElementById('recentSubmissionsList');
+        const recentSubmissionsLoading = document.getElementById('recentSubmissionsLoading');
+        const recentSubmissionsEmpty = document.getElementById('recentSubmissionsEmpty');
+        const recentSubmissionsError = document.getElementById('recentSubmissionsError');
+
+        async function fetchRecentSubmissions() {
+            recentSubmissionsLoading.classList.remove('hidden');
+            recentSubmissionsEmpty.classList.add('hidden');
+            recentSubmissionsList.classList.add('hidden');
+            recentSubmissionsError.classList.add('hidden');
+            recentSubmissionsList.innerHTML = '';
+
+            try {
+                const { data, error } = await supabaseClient
+                    .from('lead_requests')
+                    .select('name, age, city, mobile, created_at')
+                    .order('created_at', { ascending: false })
+                    .limit(10);
+
+                recentSubmissionsLoading.classList.add('hidden');
+
+                if (error) throw error;
+
+                if (!data || data.length === 0) {
+                    recentSubmissionsEmpty.classList.remove('hidden');
+                    return;
+                }
+
+                data.forEach((row) => {
+                    const li = document.createElement('li');
+                    const dateStr = row.created_at ? new Date(row.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+                    li.textContent = `${row.name}, ${row.age} · ${row.city} · ${row.mobile} (${dateStr})`;
+                    li.className = 'py-1 border-b border-gray-100 last:border-0';
+                    recentSubmissionsList.appendChild(li);
+                });
+                recentSubmissionsList.classList.remove('hidden');
+            } catch (err) {
+                recentSubmissionsLoading.classList.add('hidden');
+                recentSubmissionsError.textContent = err.message || 'Could not load submissions.';
+                recentSubmissionsError.classList.remove('hidden');
+            }
+        }
+
+        // ==============================================
         // BOOKING FORM LOGIC
         // ==============================================
         const leadForm = document.getElementById('leadForm');
@@ -894,11 +990,10 @@
 
                 successMessage.classList.remove('hidden');
                 leadForm.reset();
+                fetchRecentSubmissions();
 
-                // Auto-close modal after 5 seconds on success
                 setTimeout(() => {
                     closeModal(bookModal);
-                    // Hide success message after closing to reset state for next time
                     setTimeout(() => successMessage.classList.add('hidden'), 300);
                 }, 5000);
 
@@ -908,7 +1003,7 @@
                 errorMessage.classList.remove('hidden');
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit Request';
+                submitBtn.textContent = 'Book My Appointment';
             }
         });
 
@@ -994,7 +1089,7 @@
                 uploadErrorMessage.classList.remove('hidden');
             } finally {
                 uploadSubmitBtn.disabled = false;
-                uploadSubmitBtn.textContent = 'Upload Document';
+                uploadSubmitBtn.textContent = 'Securely Upload File';
             }
         });
 

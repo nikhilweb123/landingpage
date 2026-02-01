@@ -735,11 +735,21 @@
                         </div>
                         <!-- File preview card: type, size, recheck/change -->
                         <div id="filePreviewCard" class="hidden mt-3 p-3 bg-gray-50 border border-gray-200 rounded-lg">
-                            <p class="text-sm font-semibold text-gray-800 mb-1">Document to upload</p>
-                            <p id="filePreviewName" class="text-sm text-gray-700 truncate"></p>
-                            <p id="filePreviewType" class="text-xs text-gray-600 mt-0.5"></p>
-                            <p id="filePreviewSize" class="text-xs text-gray-600"></p>
-                            <button type="button" id="filePreviewChange" class="mt-2 text-sm font-medium text-[#BA3691] hover:underline">Change file</button>
+                            <div class="flex items-start justify-between mb-2">
+                                <div class="min-w-0 flex-1">
+                                    <p class="text-sm font-semibold text-gray-800 mb-0.5">Document to upload</p>
+                                    <p id="filePreviewName" class="text-sm text-gray-700 truncate font-medium"></p>
+                                    <p id="filePreviewMeta" class="text-xs text-gray-500 mt-0.5"></p>
+                                </div>
+                                <button type="button" id="filePreviewRemove" class="ml-3 text-sm font-medium text-red-500 hover:text-red-700 hover:underline">
+                                    Remove
+                                </button>
+                            </div>
+                            
+                            <!-- Progress Bar -->
+                            <div id="filePreviewProgressWrap" class="hidden w-full bg-gray-200 rounded-full h-1.5 mt-2 overflow-hidden">
+                                <div id="filePreviewProgress" class="bg-[#BA3691] h-1.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
                         </div>
                     </div>
 

@@ -105,31 +105,33 @@
 
     <header class="bg-white shadow-sm sticky top-0 z-40">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
+            <div class="flex items-center justify-between h-16 md:h-20 gap-4">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#">
-                        <img src="src/Diagnomitra.png" alt="Diagnomitra Logo" class="h-14" width="140" height="56">
+                <div class="flex-shrink-0 flex items-center min-w-0">
+                    <a href="#" class="block">
+                        <img src="src/Diagnomitra.png" alt="Diagnomitra Logo" class="h-10 md:h-14 w-auto" width="140" height="56">
                     </a>
                 </div>
 
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors">About Us</a>
-                    <a href="#services" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors">Our Services</a>
-                    <a href="#packages" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors">Health Packages</a>
-                    <a href="#contact" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors">Contact</a>
+                <!-- Desktop Navigation (centered on large screens) -->
+                <div class="hidden md:flex items-center justify-center flex-1 max-w-2xl mx-auto">
+                    <div class="flex items-center gap-6 lg:gap-8">
+                        <a href="#about" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors whitespace-nowrap">About Us</a>
+                        <a href="#services" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors whitespace-nowrap">Our Services</a>
+                        <a href="#packages" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors whitespace-nowrap">Health Packages</a>
+                        <a href="#contact" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors whitespace-nowrap">Contact</a>
+                    </div>
                 </div>
 
                 <!-- Desktop Button -->
-                <div class="hidden md:flex items-center">
-                    <button id="openModalBtn" class="bg-[#2B63AF] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#1a4580] transition-colors duration-200">
+                <div class="hidden md:flex items-center flex-shrink-0">
+                    <button id="openModalBtn" type="button" class="bg-[#2B63AF] text-white px-5 py-2 rounded-lg font-medium hover:bg-[#1a4580] transition-colors duration-200 whitespace-nowrap">
                         Book Now
                     </button>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
+                <div class="md:hidden flex items-center flex-shrink-0">
                     <button id="mobileMenuBtn" type="button" class="text-gray-600 hover:text-[#2B63AF] focus:outline-none p-2" aria-label="Open menu">
                         <svg class="w-8 h-8" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -600,38 +602,38 @@
         <!-- Modal Content -->
         <div id="modalContent" class="modal-content bg-white rounded-2xl shadow-2xl max-w-md w-full transform scale-95 opacity-0 my-4">
             <!-- Modal Header -->
-            <div class="bg-[#2B63AF] p-6 rounded-t-2xl">
+            <div class="bg-[#2B63AF] px-4 py-3 sm:p-4 rounded-t-2xl">
                 <div class="flex items-center justify-between">
-                    <h2 class="text-2xl font-bold text-white">Get Started Today</h2>
-                    <button id="closeModalBtn" class="text-white hover:text-gray-200 transition-colors" aria-label="Close modal">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <h2 class="text-xl font-bold text-white">Get Started Today</h2>
+                    <button id="closeModalBtn" class="text-white hover:text-gray-200 transition-colors p-1" aria-label="Close modal">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
                 </div>
-                <p class="text-blue-100 mt-2">Fill in your details and we'll contact you shortly</p>
+                <p class="text-blue-100 mt-1 text-sm">Fill in your details and we'll contact you shortly</p>
             </div>
 
             <!-- Modal Body -->
-            <div class="p-6">
+            <div class="p-4">
                 <!-- Form -->
-                <form id="leadForm" class="space-y-5">
+                <form id="leadForm" class="space-y-3">
                     <!-- Name Field -->
                     <div>
-                        <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                        <label for="name" class="block text-sm font-semibold text-gray-700 mb-1">Full Name *</label>
                         <input
                             type="text"
                             id="name"
                             name="name"
                             required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent transition-all duration-200"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent text-sm"
                             placeholder="Enter your full name"
                         >
                     </div>
 
                     <!-- Age Field -->
                     <div>
-                        <label for="age" class="block text-sm font-semibold text-gray-700 mb-2">Age *</label>
+                        <label for="age" class="block text-sm font-semibold text-gray-700 mb-1">Age *</label>
                         <input
                             type="number"
                             id="age"
@@ -639,81 +641,70 @@
                             required
                             min="1"
                             max="120"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent transition-all duration-200"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent text-sm"
                             placeholder="Enter your age"
                         >
                     </div>
 
                     <!-- City Field -->
                     <div>
-                        <label for="city" class="block text-sm font-semibold text-gray-700 mb-2">City *</label>
+                        <label for="city" class="block text-sm font-semibold text-gray-700 mb-1">City *</label>
                         <input
                             type="text"
                             id="city"
                             name="city"
                             required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent transition-all duration-200"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent text-sm"
                             placeholder="Enter your city"
                         >
                     </div>
 
                     <!-- Mobile Field -->
                     <div>
-                        <label for="mobile" class="block text-sm font-semibold text-gray-700 mb-2">Mobile Number *</label>
+                        <label for="mobile" class="block text-sm font-semibold text-gray-700 mb-1">Mobile Number *</label>
                         <input
                             type="tel"
                             id="mobile"
                             name="mobile"
                             required
                             pattern="[0-9]{10}"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent transition-all duration-200"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2B63AF] focus:border-transparent text-sm"
                             placeholder="10-digit mobile number"
                         >
-                        <p class="mt-1 text-xs text-gray-500">We will call you to confirm your slot.</p>
+                        <p class="mt-0.5 text-xs text-gray-500">We will call you to confirm your slot.</p>
                     </div>
 
                     <!-- Submit Button -->
                     <button
                         type="submit"
                         id="submitBtn"
-                        class="w-full bg-[#2B63AF] text-white py-4 rounded-lg font-semibold text-lg hover:bg-[#1a4580] transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                        class="w-full bg-[#2B63AF] text-white py-3 rounded-lg font-semibold text-base hover:bg-[#1a4580] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         Book My Appointment
                     </button>
-                    <p class="mt-3 text-xs text-center text-gray-500 flex items-center justify-center">
-                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    <p class="mt-2 text-xs text-center text-gray-500 flex items-center justify-center gap-1">
+                        <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                         Your data is safe. We never spam.
                     </p>
                 </form>
 
                 <!-- Success Message -->
-                <div id="successMessage" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div id="successMessage" class="hidden mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
                     <div class="flex items-center">
-                        <svg class="w-6 h-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
-                        <p class="text-green-800 font-semibold">Thank you! We'll contact you soon.</p>
+                        <p class="text-green-800 font-semibold text-sm">Thank you! We'll contact you soon.</p>
                     </div>
                 </div>
 
                 <!-- Error Message -->
-                <div id="errorMessage" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div id="errorMessage" class="hidden mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
                     <div class="flex items-center">
-                        <svg class="w-6 h-6 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-5 h-5 text-red-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
-                        <p class="text-red-800 font-semibold" id="errorText">Something went wrong. Please try again.</p>
-                    </div>
-                </div>
-
-                <!-- Recent Submissions (below form, fixed number of lines, no scroll) -->
-                <div class="mt-8 pt-6 border-t border-gray-200">
-                    <h3 class="text-sm font-semibold text-gray-700 mb-3">Recent submissions</h3>
-                    <div id="recentSubmissionsContainer" class="space-y-2">
-                        <p id="recentSubmissionsLoading" class="text-sm text-gray-500 hidden">Loading...</p>
-                        <p id="recentSubmissionsEmpty" class="text-sm text-gray-500 hidden">No submissions yet.</p>
-                        <ul id="recentSubmissionsList" class="text-sm text-gray-600 space-y-1.5 hidden"></ul>
-                        <p id="recentSubmissionsError" class="text-sm text-red-600 hidden"></p>
+                        <p class="text-red-800 font-semibold text-sm" id="errorText">Something went wrong. Please try again.</p>
                     </div>
                 </div>
             </div>
@@ -723,81 +714,89 @@
     <!-- Upload Modal Backdrop -->
     <div id="uploadModalBackdrop" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
         <!-- Modal Content -->
-        <div id="uploadModalContent" class="modal-content bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform scale-95 opacity-0">
+        <div id="uploadModalContent" class="modal-content bg-white rounded-2xl shadow-2xl max-w-md w-full transform scale-95 opacity-0">
             <!-- Modal Header -->
-            <div class="bg-[#BA3691] p-6 rounded-t-2xl">
+            <div class="bg-[#BA3691] px-4 py-3 sm:p-4 rounded-t-2xl">
                 <div class="flex items-center justify-between">
-                    <h2 class="text-2xl font-bold text-white">Upload Reports</h2>
-                    <button id="closeUploadModalBtn" class="text-white hover:text-[#2D64B0] transition-colors" aria-label="Close modal">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <h2 class="text-xl font-bold text-white">Upload Reports</h2>
+                    <button id="closeUploadModalBtn" type="button" class="text-white hover:text-white/90 transition-colors p-1" aria-label="Close modal">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
                 </div>
-                <p class="text-pink-100 mt-2">Securely upload your medical documents</p>
+                <p class="text-white/90 mt-1 text-sm">Securely upload your medical documents</p>
             </div>
 
             <!-- Modal Body -->
-            <div class="p-6">
+            <div class="p-4">
                 <!-- Upload Form -->
-                <form id="uploadForm" class="space-y-5">
+                <form id="uploadForm" class="space-y-3">
                     <!-- File Input -->
                     <div>
-                        <label for="reportFile" class="block text-sm font-semibold text-gray-700 mb-2">Select File *</label>
-                        <div class="flex items-center justify-center w-full">
-                            <label for="reportFile" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors">
-                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                        <label for="reportFile" class="block text-sm font-semibold text-gray-700 mb-1">Select File *</label>
+                        <div id="uploadDropzone" class="flex items-center justify-center w-full">
+                            <label for="reportFile" class="flex flex-col items-center justify-center w-full h-24 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors">
+                                <div class="flex flex-col items-center justify-center py-3">
+                                    <svg class="w-6 h-6 mb-2 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                                     </svg>
-                                    <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                    <p class="text-xs text-gray-600"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                     <p class="text-xs text-gray-500">PDF, JPG, PNG (MAX. 5MB)</p>
                                 </div>
-                                <input id="reportFile" type="file" class="hidden" accept=".pdf,.jpg,.jpeg,.png" required />
+                                <input id="reportFile" type="file" class="hidden" accept=".pdf,.jpg,.jpeg,.png" />
                             </label>
                         </div>
-                        <p id="fileName" class="mt-2 text-sm text-gray-600 text-center hidden"></p>
+                        <!-- File preview card: type, size, recheck/change -->
+                        <div id="filePreviewCard" class="hidden mt-3 p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                            <p class="text-sm font-semibold text-gray-800 mb-1">Document to upload</p>
+                            <p id="filePreviewName" class="text-sm text-gray-700 truncate"></p>
+                            <p id="filePreviewType" class="text-xs text-gray-600 mt-0.5"></p>
+                            <p id="filePreviewSize" class="text-xs text-gray-600"></p>
+                            <button type="button" id="filePreviewChange" class="mt-2 text-sm font-medium text-[#BA3691] hover:underline">Change file</button>
+                        </div>
                     </div>
 
                     <!-- Contact Info for Upload -->
-                     <div>
-                        <label for="uploadName" class="block text-sm font-semibold text-gray-700 mb-2">Your Name *</label>
+                    <div>
+                        <label for="uploadName" class="block text-sm font-semibold text-gray-700 mb-1">Your Name *</label>
                         <input
                             type="text"
                             id="uploadName"
                             name="uploadName"
                             required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#BA3691] focus:border-transparent transition-all duration-200"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#BA3691] focus:border-transparent text-sm"
                             placeholder="Enter your full name"
                         >
                     </div>
 
-                    <!-- Submit Button -->
+                    <!-- Submit Button (enabled only when file selected and user has reviewed) -->
                     <button
                         type="submit"
                         id="uploadSubmitBtn"
-                        class="w-full bg-[#cf6bb0] text-white py-4 rounded-lg font-semibold text-lg hover:bg-[#942b73] transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled
+                        class="w-full bg-[#BA3691] text-white py-3 rounded-lg font-semibold text-base hover:bg-[#942b73] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         Securely Upload File
                     </button>
-                    <p class="mt-3 text-xs text-center text-gray-500 flex items-center justify-center">
-                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p class="mt-2 text-xs text-center text-gray-500 flex items-center justify-center gap-1">
+                        <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         256-bit SSL Encryption. 100% Private.
                     </p>
                 </form>
 
                 <!-- Upload Success Message -->
-                <div id="uploadSuccessMessage" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div id="uploadSuccessMessage" class="hidden mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
                     <div class="flex items-center">
-                        <svg class="w-6 h-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
-                        <p class="text-green-800 font-semibold">File uploaded successfully!</p>
+                        <p class="text-green-800 font-semibold text-sm">File uploaded successfully!</p>
                     </div>
                 </div>
 
                 <!-- Upload Error Message -->
-                <div id="uploadErrorMessage" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div id="uploadErrorMessage" class="hidden mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
                     <div class="flex items-center">
                         <svg class="w-6 h-6 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -854,10 +853,6 @@
             modal.backdrop.classList.add('flex');
             document.body.classList.add('modal-open');
 
-            if (modal === bookModal) {
-                fetchRecentSubmissions();
-            }
-
             setTimeout(() => {
                 modal.content.classList.remove('scale-95', 'opacity-0');
                 modal.content.classList.add('scale-100', 'opacity-100');
@@ -905,52 +900,6 @@
         });
 
         // ==============================================
-        // RECENT SUBMISSIONS (lead_requests list)
-        // ==============================================
-        const recentSubmissionsList = document.getElementById('recentSubmissionsList');
-        const recentSubmissionsLoading = document.getElementById('recentSubmissionsLoading');
-        const recentSubmissionsEmpty = document.getElementById('recentSubmissionsEmpty');
-        const recentSubmissionsError = document.getElementById('recentSubmissionsError');
-
-        async function fetchRecentSubmissions() {
-            recentSubmissionsLoading.classList.remove('hidden');
-            recentSubmissionsEmpty.classList.add('hidden');
-            recentSubmissionsList.classList.add('hidden');
-            recentSubmissionsError.classList.add('hidden');
-            recentSubmissionsList.innerHTML = '';
-
-            try {
-                const { data, error } = await supabaseClient
-                    .from('lead_requests')
-                    .select('name, age, city, mobile, created_at')
-                    .order('created_at', { ascending: false })
-                    .limit(3);
-
-                recentSubmissionsLoading.classList.add('hidden');
-
-                if (error) throw error;
-
-                if (!data || data.length === 0) {
-                    recentSubmissionsEmpty.classList.remove('hidden');
-                    return;
-                }
-
-                data.forEach((row) => {
-                    const li = document.createElement('li');
-                    const dateStr = row.created_at ? new Date(row.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
-                    li.textContent = `${row.name}, ${row.age} · ${row.city} · ${row.mobile} (${dateStr})`;
-                    li.className = 'py-1 border-b border-gray-100 last:border-0';
-                    recentSubmissionsList.appendChild(li);
-                });
-                recentSubmissionsList.classList.remove('hidden');
-            } catch (err) {
-                recentSubmissionsLoading.classList.add('hidden');
-                recentSubmissionsError.textContent = err.message || 'Could not load submissions.';
-                recentSubmissionsError.classList.remove('hidden');
-            }
-        }
-
-        // ==============================================
         // BOOKING FORM LOGIC
         // ==============================================
         const leadForm = document.getElementById('leadForm');
@@ -990,7 +939,6 @@
 
                 successMessage.classList.remove('hidden');
                 leadForm.reset();
-                fetchRecentSubmissions();
 
                 setTimeout(() => {
                     closeModal(bookModal);
@@ -1008,25 +956,79 @@
         });
 
         // ==============================================
-        // FILE UPLOAD LOGIC
+        // FILE UPLOAD LOGIC (preview card: type, size; submit after review)
         // ==============================================
         const uploadForm = document.getElementById('uploadForm');
         const reportFile = document.getElementById('reportFile');
-        const fileNameDisplay = document.getElementById('fileName');
         const uploadSubmitBtn = document.getElementById('uploadSubmitBtn');
         const uploadSuccessMessage = document.getElementById('uploadSuccessMessage');
         const uploadErrorMessage = document.getElementById('uploadErrorMessage');
         const uploadErrorText = document.getElementById('uploadErrorText');
+        const filePreviewCard = document.getElementById('filePreviewCard');
+        const filePreviewName = document.getElementById('filePreviewName');
+        const filePreviewType = document.getElementById('filePreviewType');
+        const filePreviewSize = document.getElementById('filePreviewSize');
+        const filePreviewChange = document.getElementById('filePreviewChange');
+        const uploadDropzone = document.getElementById('uploadDropzone');
 
-        // Show filename when file selected
+        // When upload modal opens, reset form (hook into openModal via trigger wrap)
+        const uploadModalOpen = uploadModal.triggers.filter(Boolean);
+        uploadModalOpen.forEach(btn => {
+            const origOnClick = btn.onclick;
+            btn.addEventListener('click', () => {
+                setTimeout(() => {
+                    reportFile.value = '';
+                    filePreviewCard.classList.add('hidden');
+                    uploadDropzone.classList.remove('hidden');
+                    uploadSubmitBtn.disabled = true;
+                    uploadErrorMessage.classList.add('hidden');
+                }, 0);
+            });
+        });
+
+        const MAX_FILE_BYTES = 5 * 1024 * 1024; // 5MB
+
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        function getDocumentType(filename) {
+            const ext = (filename || '').split('.').pop().toLowerCase();
+            if (ext === 'pdf') return 'PDF Document';
+            if (['jpg', 'jpeg', 'png'].includes(ext)) return 'Image (' + ext.toUpperCase() + ')';
+            return 'Document';
+        }
+
         reportFile.addEventListener('change', (e) => {
             const file = e.target.files[0];
+            uploadErrorMessage.classList.add('hidden');
             if (file) {
-                fileNameDisplay.textContent = `Selected: ${file.name}`;
-                fileNameDisplay.classList.remove('hidden');
+                if (file.size > MAX_FILE_BYTES) {
+                    uploadErrorText.textContent = 'File must be 5MB or less.';
+                    uploadErrorMessage.classList.remove('hidden');
+                    reportFile.value = '';
+                    return;
+                }
+                filePreviewName.textContent = file.name;
+                filePreviewType.textContent = 'Type: ' + getDocumentType(file.name);
+                filePreviewSize.textContent = 'Size: ' + formatFileSize(file.size);
+                filePreviewCard.classList.remove('hidden');
+                uploadDropzone.classList.add('hidden');
+                uploadSubmitBtn.disabled = false;
             } else {
-                fileNameDisplay.classList.add('hidden');
+                filePreviewCard.classList.add('hidden');
+                uploadDropzone.classList.remove('hidden');
+                uploadSubmitBtn.disabled = true;
             }
+        });
+
+        filePreviewChange.addEventListener('click', () => {
+            reportFile.value = '';
+            filePreviewCard.classList.add('hidden');
+            uploadDropzone.classList.remove('hidden');
+            uploadSubmitBtn.disabled = true;
         });
 
         uploadForm.addEventListener('submit', async (e) => {
@@ -1038,7 +1040,8 @@
             const userName = document.getElementById('uploadName').value.trim();
 
             if (!file) {
-                uploadErrorText.textContent = 'Please select a file to upload.';
+                e.preventDefault();
+                uploadErrorText.textContent = 'Please select a file, then review and submit.';
                 uploadErrorMessage.classList.remove('hidden');
                 return;
             }
@@ -1047,7 +1050,6 @@
             uploadSubmitBtn.textContent = 'Uploading...';
 
             try {
-                // sanitize file name
                 const fileExt = file.name.split('.').pop();
                 const cleanName = userName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
                 const fileName = `${cleanName}_${Date.now()}.${fileExt}`;
@@ -1062,7 +1064,9 @@
 
                 uploadSuccessMessage.classList.remove('hidden');
                 uploadForm.reset();
-                fileNameDisplay.classList.add('hidden');
+                filePreviewCard.classList.add('hidden');
+                uploadDropzone.classList.remove('hidden');
+                uploadSubmitBtn.disabled = true;
 
                 // Auto-close modal after 5 seconds on success
                 setTimeout(() => {
@@ -1088,7 +1092,7 @@
                 uploadErrorText.textContent = msg;
                 uploadErrorMessage.classList.remove('hidden');
             } finally {
-                uploadSubmitBtn.disabled = false;
+                uploadSubmitBtn.disabled = reportFile.files.length === 0;
                 uploadSubmitBtn.textContent = 'Securely Upload File';
             }
         });

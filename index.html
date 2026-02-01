@@ -7,18 +7,58 @@
     <!-- SEO: Primary Title Tag with Primary Keyword -->
     <title>Diagnomitra - Preventive Healthcare & Diagnostic Testing Services</title>
     <!-- SEO: Meta Keywords -->
-    <meta name="keywords" content="preventive healthcare, diagnostic testing, health checkups, medical report analysis, Diagnomitra">   
+    <meta name="keywords" content="preventive healthcare, diagnostic testing, full body checkup, health packages, home sample collection, medical report analysis, Diagnomitra, blood test, pathology lab">   
 
     
 
     <!-- SEO: Meta Description (155 characters) -->
-    <meta name="description" content="Get comprehensive diagnostic testing and preventive health checkups with Diagnomitra. Upload reports, book tests, and take control of your health today.">
+    <meta name="description" content="Diagnomitra: Your trusted partner for preventive healthcare. Book full body checkups, home sample collection, and get accurate digital reports instantly.">
 
     <!-- SEO: Canonical Tag (Dynamic) -->
     <link rel="canonical" href="" id="dynamic-canonical">
     <script>
         // Dynamically set canonical URL based on current page URL
         document.getElementById('dynamic-canonical').href = window.location.href;
+    </script>
+
+    <!-- SEO: Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "Diagnomitra",
+      "image": "https://diagnomitra.com/src/Diagnomitra.png",
+      "description": "Comprehensive diagnostic testing and preventive health checkups.",
+      "url": "https://diagnomitra.com",
+      "telephone": "+91 1800-123-4567",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Health Tech Park",
+        "addressLocality": "Mumbai",
+        "addressRegion": "MH",
+        "postalCode": "400001",
+        "addressCountry": "IN"
+      },
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "08:00",
+        "closes": "20:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/diagnomitra",
+        "https://twitter.com/diagnomitra",
+        "https://www.instagram.com/diagnomitra"
+      ]
+    }
     </script>
 
     <!-- SEO: Open Graph Meta Tags for Social Sharing -->
@@ -64,16 +104,55 @@
 <body class="antialiased bg-white text-gray-900">
 
     <header class="bg-white shadow-sm sticky top-0 z-40">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <img src="src/Diagnomitra.png" alt="Diagnomitra Logo" class="h-14">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#">
+                        <img src="src/Diagnomitra.png" alt="Diagnomitra Logo" class="h-14">
+                    </a>
                 </div>
-                <button id="openModalBtn" class="hidden sm:block bg-[#2B63AF] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#1a4580] transition-colors duration-200">
-                    Book Now
-                </button>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors">About Us</a>
+                    <a href="#services" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors">Our Services</a>
+                    <a href="#packages" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors">Health Packages</a>
+                    <a href="#contact" class="text-gray-600 hover:text-[#2B63AF] font-medium transition-colors">Contact</a>
+                </div>
+
+                <!-- Desktop Button -->
+                <div class="hidden md:flex items-center">
+                    <button id="openModalBtn" class="bg-[#2B63AF] text-white px-6 py-2 rounded-lg font-medium hover:bg-[#1a4580] transition-colors duration-200">
+                        Book Now
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-gray-600 hover:text-[#2B63AF] focus:outline-none p-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#services" class="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#2B63AF] hover:bg-blue-50 rounded-md mobile-link">About Us</a>
+                <a href="#services" class="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#2B63AF] hover:bg-blue-50 rounded-md mobile-link">Our Services</a>
+                <a href="#packages" class="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#2B63AF] hover:bg-blue-50 rounded-md mobile-link">Health Packages</a>
+                <a href="#contact" class="block px-3 py-3 text-base font-medium text-gray-600 hover:text-[#2B63AF] hover:bg-blue-50 rounded-md mobile-link">Contact</a>
+                <div class="pt-4 mt-4 border-t border-gray-100">
+                    <button id="openModalBtnMobile" class="w-full bg-[#2B63AF] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#1a4580] transition-colors duration-200">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -115,7 +194,7 @@
         </section>
 
         <!-- Why Preventive Health Matters Section -->
-        <section class="py-16 sm:py-24 bg-white">
+        <section id="services" class="py-16 sm:py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- H2: Section Title -->
                 <div class="text-center mb-16">
@@ -174,8 +253,124 @@
             </div>
         </section>
 
+        <!-- Popular Health Packages Section -->
+        <section id="packages" class="py-16 sm:py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Popular Health Packages</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Choose from our comprehensive range of health checkup packages designed for every need.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Basic Package -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="bg-blue-600 p-6 text-center text-white">
+                            <h3 class="text-2xl font-bold">Basic Health Check</h3>
+                            <div class="mt-4 text-4xl font-bold">₹1,499</div>
+                            <p class="mt-2 text-blue-100">Essential for everyone</p>
+                        </div>
+                        <div class="p-8">
+                            <ul class="space-y-4 text-gray-600">
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Complete Blood Count (CBC)</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Blood Sugar Fasting</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Lipid Profile</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Liver Function Test</li>
+                            </ul>
+                            <button class="w-full mt-8 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors" onclick="document.getElementById('openModalBtn').click()">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Package -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-[#BA3691] relative">
+                        <div class="absolute top-0 right-0 bg-[#BA3691] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAR</div>
+                        <div class="bg-[#BA3691] p-6 text-center text-white">
+                            <h3 class="text-2xl font-bold">Advanced Health Check</h3>
+                            <div class="mt-4 text-4xl font-bold">₹2,999</div>
+                            <p class="mt-2 text-pink-100">Comprehensive coverage</p>
+                        </div>
+                        <div class="p-8">
+                            <ul class="space-y-4 text-gray-600">
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>All Basic Tests</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Kidney Function Test</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Thyroid Profile</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>HbA1c</li>
+                            </ul>
+                            <button class="w-full mt-8 bg-[#BA3691] text-white py-3 rounded-lg font-semibold hover:bg-[#942b73] transition-colors" onclick="document.getElementById('openModalBtn').click()">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Premium Package -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="bg-teal-600 p-6 text-center text-white">
+                            <h3 class="text-2xl font-bold">Full Body Premium</h3>
+                            <div class="mt-4 text-4xl font-bold">₹4,999</div>
+                            <p class="mt-2 text-teal-100">Total peace of mind</p>
+                        </div>
+                        <div class="p-8">
+                            <ul class="space-y-4 text-gray-600">
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>All Advanced Tests</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Vitamin B12 & D3</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Cardiac Risk Markers</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Iron Profile</li>
+                            </ul>
+                            <button class="w-full mt-8 bg-teal-600 text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition-colors" onclick="document.getElementById('openModalBtn').click()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative">
+                        <img src="https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Laboratory team working on diagnostic analysis" class="rounded-2xl shadow-2xl w-full h-auto">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg border border-gray-100 hidden sm:block">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-blue-100 p-3 rounded-full">
+                                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </div>
+                                <div>
+                                    <p class="text-2xl font-bold text-gray-900">100%</p>
+                                    <p class="text-sm text-gray-600">Accurate Reports</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">About Diagnomitra</h2>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            At Diagnomitra, we believe that prevention is better than cure. Founded with a mission to make high-quality diagnostic services accessible to everyone, we leverage technology to deliver accurate, timely, and understandable health reports.
+                        </p>
+                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                            Our network of NABL-accredited labs and experienced pathologists ensures that every test you book meets the highest standards of medical excellence. Whether you need a routine checkup or specialized testing, we are your trusted partner in health.
+                        </p>
+                        <ul class="grid sm:grid-cols-2 gap-4 mb-8">
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                NABL Accredited Labs
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Home Sample Collection
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Digital Reports
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Expert Consultation
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- CTA Section -->
-        <section class="py-16 sm:py-24 bg-gradient-to-br from-blue-800 via-teal-700 to-blue-900 text-white relative overflow-hidden">
+        <section id="cta" class="py-16 sm:py-24 bg-gradient-to-br from-blue-800 via-teal-700 to-blue-900 text-white relative overflow-hidden">
             <!-- Decorative circle -->
             <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-pink-500 opacity-10 blur-3xl"></div>
             <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 rounded-full bg-teal-400 opacity-10 blur-3xl"></div>
@@ -200,7 +395,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <footer id="contact" class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-3 gap-8 mb-8">
                 <!-- Brand -->
@@ -461,6 +656,7 @@
             closeBtn: document.getElementById('closeModalBtn'),
             triggers: [
                 document.getElementById('openModalBtn'),
+                document.getElementById('openModalBtnMobile'),
                 document.getElementById('bookTestsBtn'),
                 document.getElementById('ctaBookBtn')
             ]
@@ -674,6 +870,33 @@
                 uploadSubmitBtn.textContent = 'Upload Document';
             }
         });
+
+        // ==============================================
+        // MOBILE MENU LOGIC
+        // ==============================================
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close menu when clicking a link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        }
     </script>
 </body>
 </html>
